@@ -169,6 +169,60 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/main.c.s
 .PHONY : main.c.s
 
+src/new_str.o: src/new_str.c.o
+
+.PHONY : src/new_str.o
+
+# target to build an object file
+src/new_str.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/new_str.c.o
+.PHONY : src/new_str.c.o
+
+src/new_str.i: src/new_str.c.i
+
+.PHONY : src/new_str.i
+
+# target to preprocess a source file
+src/new_str.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/new_str.c.i
+.PHONY : src/new_str.c.i
+
+src/new_str.s: src/new_str.c.s
+
+.PHONY : src/new_str.s
+
+# target to generate assembly for a file
+src/new_str.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/new_str.c.s
+.PHONY : src/new_str.c.s
+
+src/sort_to_five.o: src/sort_to_five.c.o
+
+.PHONY : src/sort_to_five.o
+
+# target to build an object file
+src/sort_to_five.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/sort_to_five.c.o
+.PHONY : src/sort_to_five.c.o
+
+src/sort_to_five.i: src/sort_to_five.c.i
+
+.PHONY : src/sort_to_five.i
+
+# target to preprocess a source file
+src/sort_to_five.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/sort_to_five.c.i
+.PHONY : src/sort_to_five.c.i
+
+src/sort_to_five.s: src/sort_to_five.c.s
+
+.PHONY : src/sort_to_five.s
+
+# target to generate assembly for a file
+src/sort_to_five.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/sort_to_five.c.s
+.PHONY : src/sort_to_five.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -181,6 +235,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/new_str.o"
+	@echo "... src/new_str.i"
+	@echo "... src/new_str.s"
+	@echo "... src/sort_to_five.o"
+	@echo "... src/sort_to_five.i"
+	@echo "... src/sort_to_five.s"
 .PHONY : help
 
 

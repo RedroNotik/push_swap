@@ -3,4 +3,4 @@ project(push_swap C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(push_swap main.c)
+add_executable(push_swap main.c src/sort_to_five.c src/new_str.c)

@@ -13,20 +13,31 @@
 #  define ARG ""
 # endif
 
-void error_msg();
-
-void	push(t_list **a, t_list **b);
-t_list *rotate(t_list *st);
-t_list *r_rotate(t_list *st);
-t_list *swap(t_list *st);
-
 typedef struct 	opelem
 {
 	int	size;
 	int	max;
 	int min;
+	int mid;
 }	t_opelem;
 
-void sort_list(t_list *a, int op_elem, int size);
+void error_msg();
+
+char *new_str(char *old, char *add);
+
+char *push(t_list **from, t_list **to, char *str, int b);
+char *rotate(t_list *st, char *str, int b);
+char *r_rotate(t_list *st, char *str, int b);
+char *swap(t_list *st, char *str, int b);
+
+char	*two_elem(t_list ***a, char *answ, int b);
+char	*three_elem(t_list ***a, char *answ);
+t_list *five_elem(t_list ***a, int min);
+t_list *four_elem(t_list ***a, int min);
+
+
+t_opelem min_max_dup(int num, t_list *st, t_opelem zn);
+t_opelem min_max(t_opelem zn, int num);
+char	*sort_list(int argc, t_list **a, t_opelem zn);
 
 #endif //PUSH_SWAP_PUSH_SWAP_H

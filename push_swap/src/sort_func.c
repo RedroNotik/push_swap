@@ -4,50 +4,88 @@
 
 #include "../includes/push_swap.h"
 
-t_list *sort(t_list *a)
-{
-	t_list *tmp;
 
-	tmp = a;
-	while (tmp->next)
-	{
-		while (tmp-)
-	}
-	return (a);
+int	min(int a, int b)
+{
+	if (a > b)
+		return (b);
+	else
+		return (a);
 }
-void sort_list(t_list *a, int op_elem, int size)
+
+
+char	*sort_list(int argc, t_list **a, t_opelem zn)
 {
 	t_list *b;
-	t_list *help;
 	int 	i;
-	int		j;
+	char	*answ;
 
+	(void)zn;
+	answ = malloc(1);
+	answ[0] = '\0';
 	b = NULL;
 	i = 0;
-	help = a;
-	while (i < size)
-	{
-		if (a->content >= op_elem)
-			push(&a, &b);
-		else if (ft_lstsize(a) > 1)
-			a = rotate(a);
-		i++;
-	}
-	j = ft_lstsize(a);
-	i = 0;
-	a = sort(a);
-//	while (a->next)
+	if (argc == 3)
+		answ = two_elem(&a, answ, 0);
+//	else if (argc == 4)
+//		answ = three_elem(&a, answ);
+	return (answ);
+//	else if (argc == 5)
+//		answ = four_elem(&a, zn.min);
+//	else if (argc == 6)
+//		answ = five_elem(&a, zn.min);
+//	else
 //	{
-//		if (a->content > a->next->content)
+//		while (i < zn.size)
 //		{
-//			a = swap(a);
-//			a=a->next;
+//			if ((*a)->content <= zn.mid)
+//			{
+//				(*a)->flag = 1;
+//				push(&a, &b);
+//			}
+//			else if (ft_lstsize(a) > 1)
+//				answ = rotate(&a);
+//			i++;
 //		}
-//		else
+//		i = 0;
+//		zn = min_max_dup(b->content, b, zn);
+//		while (i < ft_lstsize(b))
 //		{
-//			a=a->next;
+//			if ((b->content > zn.mid) || (b->content == zn.min))
+//			{
+//				push(&b, &a);
+//				if (a->content == zn.min)
+//					a = rotate(a);
+//			}
+//			else if (ft_lstsize(b) > 1)
+//				b = rotate(b);
+//			i++;
 //		}
+//		i = 0;
+//		zn.min = b->content;
+//		zn.max = b->content;
+//		zn = min_max_dup(b->content, b, zn);
+//		while (i < ft_lstsize(b))
+//		{
+//			if ((b->content >= zn.mid) || (b->content == zn.min))
+//			{
+//				push(&b, &a);
+//				if (a->content == zn.min)
+//					a = rotate(a);
+//			}
+//			else if (ft_lstsize(b) > 1)
+//				b = rotate(b);
+//			i++;
+//		}
+//		push(&b, &a);
+	//}
+	//// CHECK
+//	while(a->next)
+//	{
+//		printf("%d ((\n", a->content);
+//		a = a->next;
 //	}
+//	printf("%d ((\n", a->content);
 	//// CHECK
 	//push(&a, &b);
 	//a = a->next;
@@ -55,9 +93,9 @@ void sort_list(t_list *a, int op_elem, int size)
 	//printf("%d -- A\n", a->content);
 	//size = ft_lstsize(b);
 	//printf("%d -- B %d\n", b->content, size);
-	size = ft_lstsize(a);
-	printf("%d -- A %d\n", a->content, size);
-	size = ft_lstsize(b);
-	printf("%d -- B %d\n", b->content, size);
+//	size = ft_lstsize(a);
+//	printf("%d -- A %d\n", a->content, size);
+//	size = ft_lstsize(b);
+//	printf("%d -- B %d\n", b->content, size);
 	//// END CHECK
 }

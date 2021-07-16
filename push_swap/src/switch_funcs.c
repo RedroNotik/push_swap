@@ -3,36 +3,49 @@
 //
 #include "../includes/push_swap.h"
 
-void push(t_list **from, t_list **to)
+char *push(t_list **from, t_list **to, char *str, int b)
 {
 	t_list	*tmp;
 
+	if (b == 0)
+		str = new_str(str, "pb");
+	else
+		str = new_str(str, "pa");
 	tmp = *from;
 	*from = (*from)->next;
 	tmp->next = *to;
 	*to = tmp;
+	return (str);
 }
 
 
-t_list *rotate(t_list *st)
+char *rotate(t_list *st, char *str, int b)
 {
 	t_list *tmp;
 	t_list	*help;
 
+	if (b == 0)
+		str = new_str(str, "ra");
+	else
+		str = new_str(str, "rb");
 	help = st->next;
 	tmp = st;
 	while (st->next)
 		st = st->next;
 	tmp->next = 0;
 	st->next = tmp;
-	return (help);
+	return (str);
 }
 
-t_list *r_rotate(t_list *st)
+char *r_rotate(t_list *st, char *str, int b)
 {
 	t_list *tmp;
 	t_list	*prev;
 
+	if (b == 0)
+		str = new_str(str, "rra");
+	else
+		str = new_str(str, "rrb");
 	tmp = st;
 	while (st->next)
 	{
@@ -41,22 +54,24 @@ t_list *r_rotate(t_list *st)
 	}
 	st->next = tmp;
 	prev->next = 0;
-	return (st);
+	return (str);
 }
 
-t_list *swap(t_list *st)
+char *swap(t_list *st, char *str, int b)
 {
 	t_list *tmp;
 	t_list *hlp;
 	t_list *hlp2;
 
-	if (ft_lstsize(st) < 2)
-		return (st);
+	if (b == 0)
+		str = new_str(str, "sa");
+	else
+		str = new_str(str, "sb");
 	tmp = st;
 	hlp = tmp->next;
 	hlp2 = hlp->next;
 	hlp->next = tmp;
 	tmp->next = hlp2;
 	st = hlp;
-	return (st);
+	return (str);
 }
