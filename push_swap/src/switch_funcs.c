@@ -6,72 +6,79 @@
 char *push(t_list **from, t_list **to, char *str, int b)
 {
 	t_list	*tmp;
+	t_list	*helpa;
+	t_list	*helpb;
 
+	helpa = *from;
+	helpb = *to;
 	if (b == 0)
-		str = new_str(str, "pb");
+		str = new_str(str, "pb\n");
 	else
-		str = new_str(str, "pa");
+		str = new_str(str, "pa\n");
 	tmp = *from;
-	*from = (*from)->next;
-	tmp->next = *to;
-	*to = tmp;
+	helpa = helpa->next;
+	tmp->next = helpb;
+	helpb = tmp;
+	*from = helpa;
+	*to = helpb;
 	return (str);
 }
 
 
-char *rotate(t_list *st, char *str, int b)
+char *rotate(t_list **st, char *str, int b)
 {
 	t_list *tmp;
-	t_list	*help;
+	t_list *help;
 
+	help = *st;
 	if (b == 0)
-		str = new_str(str, "ra");
+		str = new_str(str, "ra\n");
 	else
-		str = new_str(str, "rb");
-	help = st->next;
-	tmp = st;
-	while (st->next)
-		st = st->next;
-	tmp->next = 0;
-	st->next = tmp;
+		str = new_str(str, "rb\n");
+	tmp = *st;
+	while (help->next)
+		help = help->next;
+	*st = tmp->next;
+	tmp->next = 0;;
+	help->next = tmp;
 	return (str);
 }
 
-char *r_rotate(t_list *st, char *str, int b)
+char *r_rotate(t_list **st, char *str, int b)
 {
-	t_list *tmp;
+	t_list 	*tmp;
 	t_list	*prev;
 
 	if (b == 0)
-		str = new_str(str, "rra");
+		str = new_str(str, "rra\n");
 	else
-		str = new_str(str, "rrb");
-	tmp = st;
-	while (st->next)
+		str = new_str(str, "rrb\n");
+	tmp = *st;
+	while ((*st)->next)
 	{
-		prev = st;
-		st = st->next;
+		prev = *st;
+		*st = (*st)->next;
 	}
-	st->next = tmp;
+	(*st)->next = tmp;
 	prev->next = 0;
 	return (str);
 }
 
-char *swap(t_list *st, char *str, int b)
+char *swap(t_list **st, char *str, int b)
 {
 	t_list *tmp;
 	t_list *hlp;
 	t_list *hlp2;
 
 	if (b == 0)
-		str = new_str(str, "sa");
+		str = new_str(str, "sa\n");
 	else
-		str = new_str(str, "sb");
-	tmp = st;
+		str = new_str(str, "sb\n");
+	tmp = *st;
 	hlp = tmp->next;
 	hlp2 = hlp->next;
 	hlp->next = tmp;
 	tmp->next = hlp2;
-	st = hlp;
+	*st = hlp;
 	return (str);
 }

@@ -26,14 +26,15 @@ void error_msg();
 char *new_str(char *old, char *add);
 
 char *push(t_list **from, t_list **to, char *str, int b);
-char *rotate(t_list *st, char *str, int b);
-char *r_rotate(t_list *st, char *str, int b);
-char *swap(t_list *st, char *str, int b);
+char *rotate(t_list **st, char *str, int b);
+char *r_rotate(t_list **st, char *str, int b);
+char *swap(t_list **st, char *str, int b);
 
-char	*two_elem(t_list ***a, char *answ, int b);
-char	*three_elem(t_list ***a, char *answ);
-t_list *five_elem(t_list ***a, int min);
-t_list *four_elem(t_list ***a, int min);
+char	*two_elem(t_list **a, char *answ, int b);
+char	*three_elem(t_list **a, char *answ, int b);
+char *four_elem(t_list **a, t_list ** b, char *answ, int min);
+char *five_elem(t_list **a, t_list **b, char *answ, int min);
+
 
 
 t_opelem min_max_dup(int num, t_list *st, t_opelem zn);

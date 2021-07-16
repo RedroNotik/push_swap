@@ -17,23 +17,23 @@ int	min(int a, int b)
 char	*sort_list(int argc, t_list **a, t_opelem zn)
 {
 	t_list *b;
-	int 	i;
+//	int 	i;
+	t_list	*help;
 	char	*answ;
 
-	(void)zn;
+	help = *a;
 	answ = malloc(1);
 	answ[0] = '\0';
 	b = NULL;
-	i = 0;
+//	i = 0;
 	if (argc == 3)
-		answ = two_elem(&a, answ, 0);
-//	else if (argc == 4)
-//		answ = three_elem(&a, answ);
-	return (answ);
-//	else if (argc == 5)
-//		answ = four_elem(&a, zn.min);
-//	else if (argc == 6)
-//		answ = five_elem(&a, zn.min);
+		answ = two_elem(&help, answ, 0);
+	else if (argc == 4)
+		answ = three_elem(&help, answ, 0);
+	else if (argc == 5)
+		answ = four_elem(&help, &b, answ, zn.min);
+	else if (argc == 6)
+		answ = five_elem(&help, &b, answ, zn.min);
 //	else
 //	{
 //		while (i < zn.size)
@@ -79,6 +79,8 @@ char	*sort_list(int argc, t_list **a, t_opelem zn)
 //		}
 //		push(&b, &a);
 	//}
+	*a = help;
+	return (answ);
 	//// CHECK
 //	while(a->next)
 //	{
