@@ -1,91 +1,5 @@
 #include "./includes/push_swap.h"
 
-
-//static void	ft_free(char **arr, size_t i)
-//{
-//	while (i)
-//		free(arr[i--]);
-//	free(arr);
-//}
-//
-//char	*ft_strdup_castom(char *s1)
-//{
-//	char	*s2;
-//	size_t	i;
-//	size_t	j;
-//
-//	j = ft_strlen(s1);
-//	i = 0;
-//	while (i < j)
-//	{
-//		if (!ft_isdigit(s1[i]))
-//			return (NULL);
-//		i++;
-//	}
-//	i = 0;
-//	s2 = (char *)malloc(j + 1);
-//	if (!s2)
-//		return (NULL);
-//	while (i < j)
-//	{
-//		s2[i] = s1[i];
-//		i++;
-//	}
-//	s2[i] = '\0';
-//	return (s2);
-//}
-//
-//char	**parsing(int argc, char **argv)
-//{
-//	int		i;
-//	char	**a;
-//
-//	i = 0;
-//	a = (char **)malloc(sizeof(char **) * (argc));
-//	if (!a)
-//		error_msg();
-//	while (i < argc - 1)
-//	{
-//		a[i] = ft_strdup_castom(argv[i + 1]);
-//		if (!a[i])
-//		{
-//			ft_free(a, i);
-//			error_msg();
-//		}
-//		i++;
-//	}
-//	a[i] = NULL;
-//	//// CHECK
-//	i = 0;
-//	while(a[i])
-//		printf("%s\n", a[i++]);
-//	////END CHECK
-//	//// FREE
-//	ft_free(a, i);
-//	//// END FREE
-//	return (a);
-//}
-//
-//t_list sort_list(int argc)
-//{
-//	int i = 0;
-//	int max_count = argc - 1;
-//	while (i < max_count)
-//	{
-//		////PULL HALF FROM A TO B
-//		i++;
-//	}
-//}
-//void swap(t_list *st)
-//{
-//	t_list *tmp;
-//	t_list *new;
-//	tmp = st;
-//
-//}
-
-
-
 int cust_atoi(char *str)
 {
 	int	answ;
@@ -105,7 +19,7 @@ int cust_atoi(char *str)
 		answ = answ * 10 + (*str - '0');
 		str++;
 	}
-	if (*str)
+	if (*str != ' ' && *str != '\0')
 		error_msg();
 	return (answ * sign);
 }
@@ -113,7 +27,6 @@ int cust_atoi(char *str)
 t_opelem dup_finder(int num, t_list *st, t_opelem zn)
 {
 	t_list	*tmp;
-
 	tmp = st;
 	while (tmp->next)
 	{
@@ -131,23 +44,43 @@ t_opelem parsing(int argc, char **argv, t_list **st)
 	t_opelem zn;
 	int		b;
 	t_list	*help;
+	int		i;
+	int 	j;
+	char **str;
 
+	i = 1;
 	help = *st;
 	b = cust_atoi(argv[1]);
-	help = ft_lstnew(b);
 	zn.max = b;
 	zn.min = b;
-	zn.size = 2;
-	while (zn.size < argc)
+	zn.size = 1;
+	while (i < argc)
 	{
-		b = cust_atoi(argv[zn.size]);
-		zn = dup_finder(b, help, zn);
-		ft_lstadd_back(&help, ft_lstnew(b));
-		zn.size++;
+		j = 0;
+		str = ft_split(argv[i], ' ');
+		while (str[j])
+		{
+			b = cust_atoi(str[j]);
+			if (help)
+				zn = dup_finder(b, help, zn);
+			ft_lstadd_back(&help, ft_lstnew(b));
+			zn.size++;
+			free(str[j]);
+			j++;
+		}
+		i++;
 	}
 	zn.size--;
 	zn.mid = (zn.max + zn.min) / 2;
 	*st = help;
+	while (help->next)
+	{
+		if (help->content < help->next->content)
+			help = help->next;
+		else
+			return (zn);
+	}
+	zn.size = -1;
 	return (zn);
 }
 
@@ -161,7 +94,13 @@ int main(int argc, char **argv)
 	else if (argc >= 2)
 	{
 		zn = parsing(argc, argv, &a);
-		answ = sort_list(argc, &a, zn);
+		if (zn.size == -1)
+		{
+			free_list(&a);
+			write(1, "OK\n", 3);
+			return (0);
+		}
+		answ = sort_list(zn.size, &a, zn);
 		printf("%s\n", answ);
 		free(answ);
 		//// CHECK

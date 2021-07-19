@@ -2,7 +2,8 @@
 NAME = push_swap
 
 LIST = ./main.c ./src/error_msg.c ./src/sort_func.c ./src/switch_funcs.c \
-		./src/min_max.c ./src/sort_to_five.c ./src/new_str.c
+		./src/min_max.c ./src/sort_to_five.c ./src/new_str.c \
+		./src/sort_six_plus.c ./src/free_list.c
 
 FLAGS = -I./includes -g
 
@@ -11,6 +12,7 @@ OBJ	= $(patsubst %.c,%.o,$(LIST))
 
 all :
 	@make bonus -C ./libft/
+	@make -C ./libft/
 	@make $(NAME)
 
 $(NAME) : $(OBJ) ./libft/libft.a

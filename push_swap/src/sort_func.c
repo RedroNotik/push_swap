@@ -14,10 +14,9 @@ int	min(int a, int b)
 }
 
 
-char	*sort_list(int argc, t_list **a, t_opelem zn)
+char	*sort_list(int size, t_list **a, t_opelem zn)
 {
 	t_list *b;
-//	int 	i;
 	t_list	*help;
 	char	*answ;
 
@@ -25,15 +24,38 @@ char	*sort_list(int argc, t_list **a, t_opelem zn)
 	answ = malloc(1);
 	answ[0] = '\0';
 	b = NULL;
-//	i = 0;
-	if (argc == 3)
+	if (size == 2)
 		answ = two_elem(&help, answ, 0);
-	else if (argc == 4)
+	else if (size == 3)
 		answ = three_elem(&help, answ, 0);
-	else if (argc == 5)
+	else if (size == 4)
 		answ = four_elem(&help, &b, answ, zn.min);
-	else if (argc == 6)
+	else if (size == 5)
 		answ = five_elem(&help, &b, answ, zn.min);
+	else
+	{
+
+		if (help->content == zn.min)
+		{
+			answ = rotate(&help, answ, 0);
+			zn.size--;
+		}
+		while (help->content != zn.min)
+		{
+			answ = sort_six_plus(zn, &help, &b, answ);
+			b = help;
+			zn.size = 0;
+			while (b->content != zn.min)
+			{
+				b = b->next;
+				zn.size++;
+			}
+
+			b = NULL;
+			zn.size--;
+			zn = min_max_mid(help->content, help, zn, zn.size);
+		}
+	}
 //	else
 //	{
 //		while (i < zn.size)

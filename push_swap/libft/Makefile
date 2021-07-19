@@ -25,18 +25,18 @@ FLAGS = -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-		ar rcs $(NAME) $?
+		@ar rcs $(NAME) $?
 
 %.o : %.c
-	gcc $(FLAGS) $(OPTFLAGS) -c $< -o $@ -MD
+	@gcc $(FLAGS) $(OPTFLAGS) -c $< -o $@ -MD
 
 include $(wildcard $(D_FILES))
 
 bonus :
-	make OBJ="$(OBJ_B)" all
+	@make OBJ="$(OBJ_B)" all
 
 clean :
-	rm -f $(OBJ) $(OBJ_B) $(D_FILES)
+	@rm -f $(OBJ) $(OBJ_B) $(D_FILES)
 
 fclean : clean
 	@rm -f $(NAME)

@@ -48,7 +48,6 @@ char *three_elem(t_list **a, char *answ, int b)
 
 char *four_elem(t_list **a, t_list **b, char *answ, int min)
 {
-
 	while ((*a)->content != min)
 		answ = r_rotate(&(*a), answ, 0);
 	answ = push(&(*a), &(*b), answ, 0);

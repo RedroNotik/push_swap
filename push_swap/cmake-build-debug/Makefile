@@ -67,10 +67,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ghanh/Dev/push_swap
+CMAKE_SOURCE_DIR = /Users/ghanh/Dev/push_swap_git/push/push_swap
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ghanh/Dev/push_swap/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ghanh/Dev/push_swap/cmake-build-debug/CMakeFiles /Users/ghanh/Dev/push_swap/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/CMakeFiles /Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ghanh/Dev/push_swap/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -169,6 +169,33 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/main.c.s
 .PHONY : main.c.s
 
+src/free_list.o: src/free_list.c.o
+
+.PHONY : src/free_list.o
+
+# target to build an object file
+src/free_list.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/free_list.c.o
+.PHONY : src/free_list.c.o
+
+src/free_list.i: src/free_list.c.i
+
+.PHONY : src/free_list.i
+
+# target to preprocess a source file
+src/free_list.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/free_list.c.i
+.PHONY : src/free_list.c.i
+
+src/free_list.s: src/free_list.c.s
+
+.PHONY : src/free_list.s
+
+# target to generate assembly for a file
+src/free_list.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/free_list.c.s
+.PHONY : src/free_list.c.s
+
 src/new_str.o: src/new_str.c.o
 
 .PHONY : src/new_str.o
@@ -195,6 +222,33 @@ src/new_str.s: src/new_str.c.s
 src/new_str.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/new_str.c.s
 .PHONY : src/new_str.c.s
+
+src/sort_six_plus.o: src/sort_six_plus.c.o
+
+.PHONY : src/sort_six_plus.o
+
+# target to build an object file
+src/sort_six_plus.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/sort_six_plus.c.o
+.PHONY : src/sort_six_plus.c.o
+
+src/sort_six_plus.i: src/sort_six_plus.c.i
+
+.PHONY : src/sort_six_plus.i
+
+# target to preprocess a source file
+src/sort_six_plus.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/sort_six_plus.c.i
+.PHONY : src/sort_six_plus.c.i
+
+src/sort_six_plus.s: src/sort_six_plus.c.s
+
+.PHONY : src/sort_six_plus.s
+
+# target to generate assembly for a file
+src/sort_six_plus.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/sort_six_plus.c.s
+.PHONY : src/sort_six_plus.c.s
 
 src/sort_to_five.o: src/sort_to_five.c.o
 
@@ -235,9 +289,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/free_list.o"
+	@echo "... src/free_list.i"
+	@echo "... src/free_list.s"
 	@echo "... src/new_str.o"
 	@echo "... src/new_str.i"
 	@echo "... src/new_str.s"
+	@echo "... src/sort_six_plus.o"
+	@echo "... src/sort_six_plus.i"
+	@echo "... src/sort_six_plus.s"
 	@echo "... src/sort_to_five.o"
 	@echo "... src/sort_to_five.i"
 	@echo "... src/sort_to_five.s"

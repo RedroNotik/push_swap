@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/ghanh/Dev/push_swap/cmake-build-debug"/>
+				<Option working_dir="/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/ghanh/Dev/push_swap/cmake-build-debug"/>
+				<Option working_dir="/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/ghanh/Dev/push_swap/cmake-build-debug"/>
+				<Option working_dir="/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="push_swap">
-				<Option output="/Users/ghanh/Dev/push_swap/cmake-build-debug/push_swap" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ghanh/Dev/push_swap/cmake-build-debug"/>
+				<Option output="/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/push_swap" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -51,15 +51,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 push_swap"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 push_swap"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="push_swap/fast">
-				<Option output="/Users/ghanh/Dev/push_swap/cmake-build-debug/push_swap" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/ghanh/Dev/push_swap/cmake-build-debug"/>
+				<Option output="/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/push_swap" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -71,23 +71,29 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 push_swap/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 push_swap/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/ghanh/Dev/push_swap/main.c">
+		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/main.c">
 			<Option target="push_swap"/>
 		</Unit>
-		<Unit filename="/Users/ghanh/Dev/push_swap/src/new_str.c">
+		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/src/free_list.c">
 			<Option target="push_swap"/>
 		</Unit>
-		<Unit filename="/Users/ghanh/Dev/push_swap/src/sort_to_five.c">
+		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/src/new_str.c">
 			<Option target="push_swap"/>
 		</Unit>
-		<Unit filename="/Users/ghanh/Dev/push_swap/CMakeLists.txt">
+		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/src/sort_six_plus.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/src/sort_to_five.c">
+			<Option target="push_swap"/>
+		</Unit>
+		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

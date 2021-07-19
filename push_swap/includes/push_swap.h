@@ -22,7 +22,7 @@ typedef struct 	opelem
 }	t_opelem;
 
 void error_msg();
-
+void free_list(t_list **a);
 char *new_str(char *old, char *add);
 
 char *push(t_list **from, t_list **to, char *str, int b);
@@ -32,13 +32,14 @@ char *swap(t_list **st, char *str, int b);
 
 char	*two_elem(t_list **a, char *answ, int b);
 char	*three_elem(t_list **a, char *answ, int b);
-char *four_elem(t_list **a, t_list ** b, char *answ, int min);
-char *five_elem(t_list **a, t_list **b, char *answ, int min);
+char	*four_elem(t_list **a, t_list ** b, char *answ, int min);
+char	*five_elem(t_list **a, t_list **b, char *answ, int min);
+char	*sort_six_plus(t_opelem zn, t_list **a, t_list **b, char *answ);
 
 
 
-t_opelem min_max_dup(int num, t_list *st, t_opelem zn);
+t_opelem min_max_mid(int num, t_list *st, t_opelem zn, int len);
 t_opelem min_max(t_opelem zn, int num);
-char	*sort_list(int argc, t_list **a, t_opelem zn);
+char	*sort_list(int size, t_list **a, t_opelem zn);
 
 #endif //PUSH_SWAP_PUSH_SWAP_H

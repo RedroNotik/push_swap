@@ -12,15 +12,18 @@ t_opelem min_max(t_opelem zn, int num)
 	return (zn);
 }
 
-t_opelem min_max_dup(int num, t_list *st, t_opelem zn)
+t_opelem min_max_mid(int num, t_list *st, t_opelem zn, int len)
 {
 	t_list	*tmp;
+	int	i;
 
+	i = 0;
 	tmp = st;
-	while (tmp->next)
+	while (i < len)
 	{
 		zn = min_max(zn, num);
 		tmp = tmp->next;
+		i++;
 	}
 	zn = min_max(zn, num);
 	return (zn);
