@@ -3,7 +3,7 @@
 //
 #include "../includes/push_swap.h"
 
-char *push(t_list **from, t_list **to, char *str, int b)
+char	*push(t_list **from, t_list **to, char *str, int b)
 {
 	t_list	*tmp;
 	t_list	*helpa;
@@ -24,11 +24,10 @@ char *push(t_list **from, t_list **to, char *str, int b)
 	return (str);
 }
 
-
-char *rotate(t_list **st, char *str, int b)
+char	*rotate(t_list **st, char *str, int b)
 {
-	t_list *tmp;
-	t_list *help;
+	t_list	*tmp;
+	t_list	*help;
 
 	help = *st;
 	if (b == 0)
@@ -39,14 +38,14 @@ char *rotate(t_list **st, char *str, int b)
 	while (help->next)
 		help = help->next;
 	*st = tmp->next;
-	tmp->next = 0;;
+	tmp->next = 0;
 	help->next = tmp;
 	return (str);
 }
 
-char *r_rotate(t_list **st, char *str, int b)
+char	*r_rotate(t_list **st, char *str, int b)
 {
-	t_list 	*tmp;
+	t_list	*tmp;
 	t_list	*prev;
 
 	if (b == 0)
@@ -64,11 +63,11 @@ char *r_rotate(t_list **st, char *str, int b)
 	return (str);
 }
 
-char *swap(t_list **st, char *str, int b)
+char	*swap(t_list **st, char *str, int b)
 {
-	t_list *tmp;
-	t_list *hlp;
-	t_list *hlp2;
+	t_list	*tmp;
+	t_list	*hlp;
+	t_list	*hlp2;
 
 	if (b == 0)
 		str = new_str(str, "sa\n");

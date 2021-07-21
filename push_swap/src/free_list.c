@@ -3,7 +3,7 @@
 //
 #include "../includes/push_swap.h"
 
-void free_list(t_list **a)
+void	free_list(t_list **a)
 {
 	t_list	*help;
 	t_list	*p;
