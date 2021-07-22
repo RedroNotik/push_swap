@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/push_swap.dir/src/new_str.c.o"
   "CMakeFiles/push_swap.dir/src/sort_six_plus.c.o"
   "CMakeFiles/push_swap.dir/src/sort_to_five.c.o"
+  "CMakeFiles/push_swap.dir/src/string_maker.c.o"
   "push_swap"
   "push_swap.pdb"
 )

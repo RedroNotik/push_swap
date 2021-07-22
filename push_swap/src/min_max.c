@@ -3,6 +3,24 @@
 //
 #include "../includes/push_swap.h"
 
+int			min_l(t_list *a)
+{
+	int help;
+	t_list *helpl;
+
+	help = a->content;
+	helpl = a;
+	while (helpl->next)
+	{
+		if (help < helpl->content)
+			help = helpl->content;
+		helpl = helpl->next;
+	}
+	if (help < helpl->content)
+		help = helpl->content;
+	return (help);
+}
+
 t_opelem	min_max(t_opelem zn, int num)
 {
 	if (num >= zn.max)

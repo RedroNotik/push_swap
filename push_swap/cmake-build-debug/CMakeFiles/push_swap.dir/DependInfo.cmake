@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/ghanh/Dev/push_swap_git/push/push_swap/src/new_str.c" "/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/CMakeFiles/push_swap.dir/src/new_str.c.o"
   "/Users/ghanh/Dev/push_swap_git/push/push_swap/src/sort_six_plus.c" "/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/CMakeFiles/push_swap.dir/src/sort_six_plus.c.o"
   "/Users/ghanh/Dev/push_swap_git/push/push_swap/src/sort_to_five.c" "/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/CMakeFiles/push_swap.dir/src/sort_to_five.c.o"
+  "/Users/ghanh/Dev/push_swap_git/push/push_swap/src/string_maker.c" "/Users/ghanh/Dev/push_swap_git/push/push_swap/cmake-build-debug/CMakeFiles/push_swap.dir/src/string_maker.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

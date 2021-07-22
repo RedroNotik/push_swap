@@ -36,6 +36,8 @@ t_opelem	dup_finder(int num, t_list *st, t_opelem zn)
 		zn = min_max(zn, num);
 		tmp = tmp->next;
 	}
+	if (num == tmp->content)
+		error_msg();
 	zn = min_max(zn, num);
 	return (zn);
 }
@@ -103,7 +105,16 @@ int	main(int argc, char **argv)
 			return (0);
 		}
 		answ = sort_list(zn.size, &a, zn);
-		printf("%s\n", answ);
+		printf("%sOK\n", answ);
+		int b = 0;
+		int i = 0;
+		while (answ[i])
+		{
+			if (answ[i]== '\n')
+				b++;
+			i++;
+		}
+		printf("%d - COUNT\n", b);
 		free(answ);
 		//// CHECK
 		while (a->next)
