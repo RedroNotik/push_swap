@@ -93,6 +93,9 @@
 		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/src/sort_to_five.c">
 			<Option target="push_swap"/>
 		</Unit>
+		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/src/string_maker.c">
+			<Option target="push_swap"/>
+		</Unit>
 		<Unit filename="/Users/ghanh/Dev/push_swap_git/push/push_swap/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

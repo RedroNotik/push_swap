@@ -277,6 +277,33 @@ src/sort_to_five.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/sort_to_five.c.s
 .PHONY : src/sort_to_five.c.s
 
+src/string_maker.o: src/string_maker.c.o
+
+.PHONY : src/string_maker.o
+
+# target to build an object file
+src/string_maker.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/string_maker.c.o
+.PHONY : src/string_maker.c.o
+
+src/string_maker.i: src/string_maker.c.i
+
+.PHONY : src/string_maker.i
+
+# target to preprocess a source file
+src/string_maker.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/string_maker.c.i
+.PHONY : src/string_maker.c.i
+
+src/string_maker.s: src/string_maker.c.s
+
+.PHONY : src/string_maker.s
+
+# target to generate assembly for a file
+src/string_maker.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/push_swap.dir/build.make CMakeFiles/push_swap.dir/src/string_maker.c.s
+.PHONY : src/string_maker.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -301,6 +328,9 @@ help:
 	@echo "... src/sort_to_five.o"
 	@echo "... src/sort_to_five.i"
 	@echo "... src/sort_to_five.s"
+	@echo "... src/string_maker.o"
+	@echo "... src/string_maker.i"
+	@echo "... src/string_maker.s"
 .PHONY : help
 
 

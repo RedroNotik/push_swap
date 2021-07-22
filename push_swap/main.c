@@ -103,17 +103,16 @@ int	main(int argc, char **argv)
 			return (0);
 		}
 		answ = sort_list(zn.size, &a, zn);
-		printf("%s", answ);
+		printf("%s\n", answ);
 		free(answ);
 		//// CHECK
-//		while (a->next)
-//		{
-//			printf("%d and FLAG:%d\n", a->content, a->flag);
-//			a = a->next;
-//		}
-//		printf("%d and FLAG:%d\n", a->content, a->flag);
+		while (a->next)
+		{
+			printf("%d\n", a->content);
+			a = a->next;
+		}
+		printf("%d\n", a->content);
 		//// END CHECK
-		free_list(&a);
 	}
 	return 0;
 }

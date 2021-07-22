@@ -28,11 +28,8 @@ char	*sort_six_plus(t_opelem zn, t_list **a, t_list **b, char *answ)
 		}
 		i++;
 	}
-	printf("J : %d\n", j);
 	while (j-- > 0)
-	{
 		answ = r_rotate(&(*a), answ, 0);
-	}
 	i = 0;
 	while (i < bsize)
 	{
