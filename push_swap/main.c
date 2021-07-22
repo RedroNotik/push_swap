@@ -92,7 +92,6 @@ int	main(int argc, char **argv)
 	t_list		*a;
 	t_opelem	zn;
 	char		*answ;
-
 	if (argc == 1)
 		exit(1);
 	else if (argc >= 2)
@@ -114,15 +113,15 @@ int	main(int argc, char **argv)
 				b++;
 			i++;
 		}
-		printf("%d - COUNT\n", b);
-		free(answ);
-		//// CHECK
-		while (a->next)
-		{
-			printf("%d\n", a->content);
-			a = a->next;
-		}
-		printf("%d\n", a->content);
+	//	printf("%d - COUNT\n", b);
+//		free(answ);
+//		//// CHECK
+//		while (a->next)
+//		{
+//			printf("%d\n", a->content);
+//			a = a->next;
+//		}
+//		printf("%d\n", a->content);
 		//// END CHECK
 	}
 	return 0;
