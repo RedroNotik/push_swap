@@ -30,8 +30,8 @@ char	*sort_list(int size, t_list **a, t_opelem zn)
 	{
 		if (help->content == zn.min)
 		{
-			answ = rotate(&help, answ, 0);
-			zn.size--;
+			answ = swap(&help, answ, 0);
+//			zn.size--;
 		}
 		while (help->content != minzn)
 		{

@@ -3,8 +3,9 @@
 //
 #include "../includes/push_swap.h"
 
-void	error_msg(void)
+void	error_msg(t_list *a)
 {
+	free_list(&a);
 	ft_putstr_fd("Error\n", 6, 2);
 	exit(0);
 }

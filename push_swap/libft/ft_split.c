@@ -1,6 +1,6 @@
 #include "../includes/libft.h"
 
-static void	ft_free(char **arr, size_t i)
+void	ft_free(char **arr, size_t i)
 {
 	while (i)
 		free(arr[i--]);

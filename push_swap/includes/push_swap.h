@@ -17,8 +17,9 @@ typedef struct s_opelem
 	int	mid;
 }	t_opelem;
 
+void	ft_free(char **arr, size_t i);
 int			min_l(t_list *a);
-void		error_msg(void);
+void		error_msg(t_list *a);
 void		free_list(t_list **a);
 char		*new_str(char *old, char *add);
 char		*push(t_list **from, t_list **to, char *str, int b);
