@@ -60,19 +60,9 @@ char	*sort_six_plus(t_opelem zn, t_list **a, t_list **b, char *answ)
 		{
 			j++;
 			help = help->next;
-			//answ = rotate(&(*a), answ, 0);
 		}
 		i++;
 	}
-//	while (j-- > 0)
-//		answ = r_rotate(&(*a), answ, 0);
-//	if (ft_lstsize(*a) < 6)
-//		answ = sort_five(ft_lstsize(*a), answ, &(*a), min_l(*a));
-//	if (ft_lstsize(*a) < 6)
-//	{
-//		answ = sort_five(ft_lstsize(*a), answ, &(*a), min_l(*a));
-//		j += ft_lstsize(*a);
-//	}
 	i = 0;
 	while (i < bsize)
 	{
@@ -95,6 +85,5 @@ char	*sort_six_plus(t_opelem zn, t_list **a, t_list **b, char *answ)
 	while ((*b)->content != zn.min && (*b)->next)
 		answ = rotate(&(*b), answ, 1);
 	answ = push(&(*b), &(*a), answ, 1);
-:
 	return (answ);
 }

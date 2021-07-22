@@ -28,46 +28,25 @@ char	*sort_list(int size, t_list **a, t_opelem zn)
 		answ = sort_five(zn.size, answ, &help, zn.min);
 	else
 	{
-		//// OLD
-//		if (help->content == zn.min)
-//		{
-//			answ = rotate(&help, answ, 0);
+		if (help->content == zn.min)
+		{
+			answ = swap(&help, answ, 0);
 //			zn.size--;
-//		}
-//		while (help->content != minzn)
-//		{
-//			answ = sort_six_plus(zn, &help, &b, answ);
-//			b = help;
-//			zn.size = 0;
-//			while (b->content != minzn)
-//			{
-//				b = b->next;
-//				zn.size++;
-//			}
-//			b = NULL;
-//			zn = min_max_mid(help->content, help, zn, zn.size);
-//		}
-//// END OLD
-	answ = sort_six_swap(zn, &(*a), &b, answ);
-	answ = sort_six_after_begin(zn, &(*a), &b, answ); // After this func i have massive with sorted end And usorted top
-	while ((*a)->flag != -1)
-	{
-		answ = check_lower(&(*a), answ); // SHOUD BE IN WHILE
-		help = *a;
-		while (help->next && (help->flag == help->next->flag))
-		{
-			help = help->next;
-			answ = push(&(*a), &b, answ, 0);
 		}
-		if (help->content == (*a)->content)
+		while (help->content != minzn)
 		{
-			help = help->next;
-			answ = push(&(*a), &b, answ, 0);
+			answ = sort_six_plus(zn, &help, &b, answ);
+			b = help;
+			zn.size = 0;
+			while (b->content != minzn)
+			{
+				b = b->next;
+				zn.size++;
+			}
+			b = NULL;
+			zn = min_max_mid(help->content, help, zn, zn.size);
 		}
-	//	printf("%d - Bsize\n", ft_lstsize(b));
-		answ = sort_six_after_begin(zn, &(*a), &b, answ);
 	}
-	}
-	//*a = help;
+	*a = help;
 	return (answ);
 }
