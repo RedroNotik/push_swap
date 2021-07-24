@@ -1,6 +1,6 @@
 #include "./includes/push_swap.h"
 
-int	cust_atoi(char *str)
+int	cust_atoi(char *str, t_list *a)
 {
 	int	answ;
 	int	sign;
@@ -20,7 +20,7 @@ int	cust_atoi(char *str)
 		str++;
 	}
 	if (*str != ' ' && *str != '\0')
-		error_msg();
+		error_msg(a);
 	return (answ * sign);
 }
 
@@ -32,7 +32,7 @@ t_opelem	dup_finder(int num, t_list *st, t_opelem zn)
 	while (tmp->next)
 	{
 		if (num == tmp->content)
-			error_msg();
+			error_msg(st);
 		zn = min_max(zn, num);
 		tmp = tmp->next;
 	}
@@ -51,7 +51,7 @@ t_opelem	parsing(int argc, char **argv, t_list **st)
 
 	i = 1;
 	help = *st;
-	b = cust_atoi(argv[1]);
+	b = cust_atoi(argv[1], help);
 	zn.max = b;
 	zn.min = b;
 	zn.size = 1;
@@ -61,7 +61,7 @@ t_opelem	parsing(int argc, char **argv, t_list **st)
 		str = ft_split(argv[i], ' ');
 		while (str[j])
 		{
-			b = cust_atoi(str[j]);
+			b = cust_atoi(str[j], help);
 			if (help)
 				zn = dup_finder(b, help, zn);
 			ft_lstadd_back(&help, ft_lstnew(b));
