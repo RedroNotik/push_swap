@@ -3,7 +3,7 @@ NAME = push_swap
 
 LIST = ./main.c ./src/error_msg.c ./src/sort_func.c ./src/switch_funcs.c \
 		./src/min_max.c ./src/sort_to_five.c ./src/new_str.c \
-		./src/sort_six_plus.c ./src/free_list.c
+		./src/sort_six_plus.c ./src/free_list.c ./src/sort_six_plusV2.c
 
 FLAGS = -I./includes -g
 

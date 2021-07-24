@@ -24,14 +24,20 @@ char	*sort_list(int size, t_list **a, t_opelem zn)
 	answ = malloc(1);
 	answ[0] = '\0';
 	b = NULL;
-	if (size < 6)
-		answ = sort_five(zn.size, answ, &help, zn.min);
+	if (size == 2)
+		answ = two_elem(&help, answ, 0);
+	else if (size == 3)
+		answ = three_elem(&help, answ, 0);
+	else if (size == 4)
+		answ = four_elem(&help, &b, answ, zn.min);
+	else if (size == 5)
+		answ = five_elem(&help, &b, answ, zn.min);
 	else
 	{
 		if (help->content == zn.min)
 		{
-			answ = swap(&help, answ, 0);
-//			zn.size--;
+			answ = rotate(&help, answ, 0);
+			zn.size--;
 		}
 		while (help->content != minzn)
 		{
