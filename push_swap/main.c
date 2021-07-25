@@ -100,14 +100,11 @@ int	main(int argc, char **argv)
 		if (zn.size == -1)
 		{
 			free_list(&a);
-		//	write(1, "OK\n", 3);
 			return (0);
 		}
 		answ = sort_list(zn.size, &a, zn);
-		free_list(&a);
+
 		printf("%s", answ);
-		free(answ);
-	//	printf("%d - COUNT\n", b);
 		//// CHECK
 //		while (a->next)
 //		{
@@ -115,7 +112,8 @@ int	main(int argc, char **argv)
 //			a = a->next;
 //		}
 //		printf("%d\n", a->content);
-//		//// END CHECK
+		//free_list(&a);
+		//// END CHECK
 	}
 	return 0;
 }
