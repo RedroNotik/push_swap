@@ -4,25 +4,6 @@
 #include "../includes/push_swap.h"
 
 
-char 	*sort_five(int size, char *answ, t_list **a, int min)
-{
-	t_list	*b;
-	t_list	*help;
-
-	help = *a;
-	b = NULL;
-
-	if (size == 2)
-		answ = two_elem(&help, answ, 0);
-	else if (size == 3)
-		answ = three_elem(&help, answ, 0);
-	else if (size == 4)
-		answ = four_elem(&help, &b, answ, min);
-	else if (size == 5)
-		answ = five_elem(&help, &b, answ, min);
-	*a = help;
-	return (answ);
-}
 
 char	*sort_six_plus(t_opelem zn, t_list **a, t_list **b, char *answ)
 {

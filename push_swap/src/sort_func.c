@@ -12,20 +12,37 @@ int	min(int a, int b)
 		return (a);
 }
 
-char	*sort_list(int size, t_list **a, t_opelem zn)
+char 	*sort_five(int size, char *answ, t_list **a, int flag)
 {
 	t_list	*b;
 	t_list	*help;
-	char	*answ;
-	int		minzn;
 
-	minzn = zn.min;
 	help = *a;
+	b = NULL;
+
+	if (size == 2)
+		answ = two_elem(&help, answ, flag);
+	else if (size == 3)
+		answ = three_elem(&help, answ, flag);
+	else if (size == 4)
+		answ = four_elem(&help, &b, answ, flag);
+	else if (size == 5)
+		answ = five_elem(&help, &b, answ, flag);
+	*a = help;
+	return (answ);
+}
+
+char	*sort_list(int size, t_list **a, t_opelem zn)
+{
+	t_list	*b;
+	char	*answ;
+	t_list	*help;
+
 	answ = malloc(1);
 	answ[0] = '\0';
 	b = NULL;
 	if (size < 6)
-		answ = sort_five(zn.size, answ, &help, zn.min);
+		answ = sort_five(zn.size, answ, &(*a), 0);
 	else
 	{
 //		if (help->content == zn.min)
@@ -61,16 +78,33 @@ char	*sort_list(int size, t_list **a, t_opelem zn)
 			{
 				help = help->next;
 				answ = push(&(*a), &b, answ, 0);
+				answ = check_lower(&(*a), answ);
 			}
-			if (help->content == (*a)->content)
+			if (help->flag == (*a)->flag)
 			{
 				help = help->next;
-				answ = push(&(*a), &b, answ, 0);
+				(*a)->flag = -1;
+				answ = rotate(&(*a), answ, 0);
+			//	answ = push(&(*a), &b, answ, 0);
+			//	answ = new_str(answ, "checked&&&\n");
 			}
-			//	printf("%d - Bsize\n", ft_lstsize(b));
-			answ = sort_six_after_begin(zn, &(*a), &b, answ);
+//			if (ft_lstsize(b) < 6 && ft_lstsize(b) != 0)
+//			{
+//				answ = sort_five(ft_lstsize(b), answ, &b, 1);
+//				while (ft_lstsize(b) > 1)
+//				{
+//					b->flag = -1;
+//					answ = push(&b, &(*a), answ, 1);
+//					answ = rotate(&(*a), answ, 0);
+//				}
+//				b->flag = -1;
+//				answ = push(&b, &(*a), answ, 1);
+//				answ = rotate(&(*a), answ, 0);
+//			}
+//			else
+				answ = sort_six_after_begin(zn, &(*a), &b, answ);
 		}
 	}
-	*a = help;
+//	*a = help;
 	return (answ);
 }

@@ -44,34 +44,64 @@ char	*three_elem(t_list **a, char *answ, int b)
 	return (answ);
 }
 
-char	*four_elem(t_list **a, t_list **b, char *answ, int min)
+char	*four_elem(t_list **a, t_list **b, char *answ, int flag)
 {
-	while ((*a)->content != min)
-		answ = r_rotate(&(*a), answ, 0);
-	answ = push(&(*a), &(*b), answ, 0);
-	answ = three_elem(&(*a), answ, 0);
-	answ = push(&(*b), &(*a), answ, 1);
+	t_opelem zn;
+	int from;
+	int to;
+
+	if (flag == 1)
+	{
+		from = 1;
+		to = 0;
+	}
+	else
+	{
+		from = 0;
+		to = 1;
+	}
+	zn = min_max_mid((*a)->content, (*a), zn, ft_lstsize(*a));
+	while ((*a)->content != zn.min)
+		answ = r_rotate(&(*a), answ, from);
+	answ = push(&(*a), &(*b), answ, from);
+	answ = three_elem(&(*a), answ, from);
+	answ = push(&(*b), &(*a), answ, to);
 	return (answ);
 }
 
-char	*five_elem(t_list **a, t_list **b, char *answ, int min)
+char	*five_elem(t_list **a, t_list **b, char *answ, int flag)
 {
 	t_list	*help;
 
-	while ((*a)->content != min)
-		answ = rotate(&(*a), answ, 0);
-	answ = push(&(*a), &(*b), answ, 0);
-	min = (*a)->content;
+	t_opelem zn;
+	int from;
+	int to;
+
+	if (flag == 1)
+	{
+		from = 1;
+		to = 0;
+	}
+	else
+	{
+		from = 0;
+		to = 1;
+	}
+	zn = min_max_mid((*a)->content, (*a), zn, ft_lstsize(*a));
+	while ((*a)->content != zn.min)
+		answ = rotate(&(*a), answ, from);
+	answ = push(&(*a), &(*b), answ, from);
+	zn.min = (*a)->content;
 	help = *a;
 	while (help->next)
 	{
-		if (help->content < min)
-			min = help->content;
+		if (help->content < zn.min)
+			zn.min = help->content;
 		help = help->next;
 	}
-	if (help->content < min)
-		min = help->content;
-	answ = four_elem(a, b, answ, min);
-	answ = push(&(*b), &(*a), answ, 1);
+	if (help->content < zn.min)
+		zn.min = help->content;
+	answ = four_elem(a, b, answ, flag);
+	answ = push(&(*b), &(*a), answ, to);
 	return (answ);
 }
