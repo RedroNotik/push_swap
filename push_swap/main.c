@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 			return (0);
 		}
 		answ = sort_list(zn.size, &a, zn);
-	//	printf("%s", answ);
+		printf("%s", answ);
 		//// CHECK
 		while (a->next)
 		{

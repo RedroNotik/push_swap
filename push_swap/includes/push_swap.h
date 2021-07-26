@@ -40,6 +40,6 @@ t_opelem	min_max(t_opelem zn, int num);
 char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ);
 char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ);
 char	*sort_six_swap(t_opelem zn, t_list **a, t_list **b, char *answ);
-char	*check_lower(t_list **a, char *answ);
+int		check_lower(t_list **a, int minnum, int flag);
 ////
 #endif //PUSH_SWAP_PUSH_SWAP_H

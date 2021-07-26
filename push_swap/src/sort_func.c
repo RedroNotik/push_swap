@@ -70,40 +70,96 @@ char	*sort_list(int size, t_list **a, t_opelem zn)
 //		}
 		answ = sort_six_swap(zn, &(*a), &b, answ);
 		answ = sort_six_after_begin(zn, &(*a), &b, answ); // After this func i have massive with sorted end And usorted top
-		while ((*a)->flag != -1)
+		while ((*a)->flag != 0)
 		{
-			answ = check_lower(&(*a), answ); // SHOUD BE IN WHILE
-			help = *a;
-			while (help->next && (help->flag == help->next->flag))
+			int minnum = (*a)->content;
+			int h = (*a)->flag;
+			while ((*a)->next && (*a)->flag == h)
 			{
-				help = help->next;
-				answ = push(&(*a), &b, answ, 0);
-				answ = check_lower(&(*a), answ);
+				if (check_lower(&(*a), minnum, h) && (
+						check_lower(&((*a)->next), minnum, h) || !((*a)->next->flag == h)))
+				{
+					if ((*a)->content < minnum)
+						minnum = (*a)->content;
+					answ = push(&(*a), &b, answ, 0);
+				}
+				else if (check_lower(&(*a), minnum, h) && (!(check_lower(&((*a)->next), minnum, h)) && (*a)->next->flag == h))
+				{
+					answ = swap(&(*a), answ, 0);
+					(*a)->flag = -1;
+					answ = rotate(&(*a), answ, 0);
+				}
+				else
+				{
+					(*a)->flag = -1;
+					answ = rotate(&(*a), answ, 0);
+				}
+
 			}
-			if (help->flag == (*a)->flag)
+			if ((*a)->flag == h)
 			{
-				help = help->next;
 				(*a)->flag = -1;
 				answ = rotate(&(*a), answ, 0);
-			//	answ = push(&(*a), &b, answ, 0);
-			//	answ = new_str(answ, "checked&&&\n");
 			}
-//			if (ft_lstsize(b) < 6 && ft_lstsize(b) != 0)
-//			{
-//				answ = sort_five(ft_lstsize(b), answ, &b, 1);
-//				while (ft_lstsize(b) > 1)
-//				{
-//					b->flag = -1;
-//					answ = push(&b, &(*a), answ, 1);
-//					answ = rotate(&(*a), answ, 0);
-//				}
-//				b->flag = -1;
-//				answ = push(&b, &(*a), answ, 1);
-//				answ = rotate(&(*a), answ, 0);
-//			}
-//			else
 				answ = sort_six_after_begin(zn, &(*a), &b, answ);
 		}
+		t_list *help;
+
+		help = *a;
+		zn.size = 0;
+		while (help->flag == 0)
+		{
+			zn.size++;
+			help = help->next;
+		}
+		zn = min_max_mid((*a)->content, *a, zn, zn.size);
+		answ = sort_six_swap(zn, &(*a), &b, answ);
+		help = *a;
+		zn.size = 0;
+		while (help->next)
+		{
+			help = help->next;
+			if (help->flag== 0)
+				zn.size++;
+		}
+		while (zn.size-- > 0)
+			answ = r_rotate(&(*a), answ, 0);
+		answ = sort_six_after_begin(zn, &(*a), &b, answ); // After this func i have massive with sorted end And usorted top
+		while ((*a)->flag != -1)
+		{
+			int minnum = (*a)->content;
+			int h = (*a)->flag;
+			while ((*a)->next && (*a)->flag == h)
+			{
+				if (check_lower(&(*a), minnum, h) && (
+						check_lower(&((*a)->next), minnum, h) || !((*a)->next->flag == h)))
+				{
+					if ((*a)->content < minnum)
+						minnum = (*a)->content;
+					answ = push(&(*a), &b, answ, 0);
+				}
+				else if (check_lower(&(*a), minnum, h) && (!(check_lower(&((*a)->next), minnum, h)) && (*a)->next->flag == h))
+				{
+					answ = swap(&(*a), answ, 0);
+					(*a)->flag = -1;
+					answ = rotate(&(*a), answ, 0);
+				}
+				else
+				{
+					(*a)->flag = -1;
+					answ = rotate(&(*a), answ, 0);
+				}
+
+			}
+			if ((*a)->flag == h)
+			{
+				(*a)->flag = -1;
+				answ = rotate(&(*a), answ, 0);
+			}
+			answ = sort_six_after_begin(zn, &(*a), &b, answ);
+		}
+
+
 	}
 //	*a = help;
 	return (answ);

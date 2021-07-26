@@ -88,19 +88,19 @@ char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ)
 	return (answ);
 }
 
-char	*check_lower(t_list **a, char *answ)
+int		check_lower(t_list **a, int minnum, int flag)
 {
 	t_list *help;
 
 	help = *a;
-	while (help->next && (help->flag == (*a)->flag))
+	if (help->content > minnum)
+		return (1);
+	while (help->next && help->flag == flag && help->next->flag == flag)
 	{
 		if (help->content > help->next->content)
-			return (answ);
+			return (1);
 		help = help->next;
 	}
-	(*a)->flag = - 1;
-	answ = rotate(&(*a), answ, 0);
-	return	(answ);
+	return	(0);
 }
 
