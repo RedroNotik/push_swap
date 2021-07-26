@@ -105,13 +105,13 @@ int	main(int argc, char **argv)
 		answ = sort_list(zn.size, &a, zn);
 		printf("%s", answ);
 		//// CHECK
-		while (a->next)
-		{
-			printf("%d and flag: %d\n", a->content, a->flag);
-			a = a->next;
-		}
-		printf("%d and flag: %d\n", a->content, a->flag);
-		free_list(&a);
+//		while (a->next)
+//		{
+//			printf("%d and flag: %d\n", a->content, a->flag);
+//			a = a->next;
+//		}
+//		printf("%d and flag: %d\n", a->content, a->flag);
+//		free_list(&a);
 		//// END CHECK
 	}
 	return 0;

@@ -97,7 +97,7 @@ int		check_lower(t_list **a, int minnum, int flag)
 		return (1);
 	while (help->next && help->flag == flag && help->next->flag == flag)
 	{
-		if (help->content > help->next->content)
+		if ((*a)->content > help->next->content)
 			return (1);
 		help = help->next;
 	}
