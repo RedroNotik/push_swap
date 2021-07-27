@@ -46,6 +46,6 @@ t_opelem	min_max_mid(int num, t_list *st, t_opelem zn, int len)
 		i++;
 	}
 	zn = min_max(zn, num);
-	zn.mid = (zn.max + zn.min) / 2;
+	zn.mid = ((zn.max - zn.min) / 2) + zn.min;
 	return (zn);
 }

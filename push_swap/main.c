@@ -74,7 +74,7 @@ t_opelem	parsing(int argc, char **argv, t_list **st)
 		i++;
 	}
 	zn.size--;
-	zn.mid = (zn.max + zn.min) / 2;
+	zn.mid = zn.max / 2 + zn.min;
 	*st = help;
 	while (help->next)
 	{
@@ -90,6 +90,7 @@ t_opelem	parsing(int argc, char **argv, t_list **st)
 int	main(int argc, char **argv)
 {
 	t_list		*a;
+	t_list		*b;
 	t_opelem	zn;
 	char		*answ;
 	if (argc == 1)
@@ -102,12 +103,15 @@ int	main(int argc, char **argv)
 			free_list(&a);
 			return (0);
 		}
-		answ = sort_list(zn.size, &a, zn);
+		answ = sort_list(zn.size, &a, zn, &b);
 		printf("%s", answ);
 		//// CHECK
+//		printf("%d SIZE\n", ft_lstsize(a));
 //		while (a->next)
 //		{
 //			printf("%d and flag: %d\n", a->content, a->flag);
+//			if (a->content > a->next->content)
+//				printf("VERY BAD\n");
 //			a = a->next;
 //		}
 //		printf("%d and flag: %d\n", a->content, a->flag);

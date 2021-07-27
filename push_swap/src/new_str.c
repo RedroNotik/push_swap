@@ -7,7 +7,11 @@ char	*new_str(char *old, char *add)
 {
 	char	*new;
 
-	new = ft_strjoin(old, add);
-	free(old);
-	return (new);
+	if (old)
+	{
+		new = ft_strjoin(old, add);
+		free(old);
+		return (new);
+	}
+	return (NULL);
 }
