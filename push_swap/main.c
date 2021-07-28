@@ -106,16 +106,16 @@ int	main(int argc, char **argv)
 		answ = sort_list(zn.size, &a, zn, &b);
 		printf("%s", answ);
 		//// CHECK
-//		printf("%d SIZE\n", ft_lstsize(a));
-//		while (a->next)
-//		{
-//			printf("%d and flag: %d\n", a->content, a->flag);
-//			if (a->content > a->next->content)
-//				printf("VERY BAD\n");
-//			a = a->next;
-//		}
-//		printf("%d and flag: %d\n", a->content, a->flag);
-//		free_list(&a);
+		printf("%d SIZE\n", ft_lstsize(a));
+		while (a->next)
+		{
+			printf("%d and flag: %d\n", a->content, a->flag);
+			if (a->content > a->next->content)
+				printf("VERY BAD\n");
+			a = a->next;
+		}
+		printf("%d and flag: %d\n", a->content, a->flag);
+		free_list(&a);
 		//// END CHECK
 	}
 	return 0;

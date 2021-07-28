@@ -38,14 +38,14 @@ char 	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 	int h = (*a)->flag;
 	while ((*a)->next && (*a)->flag == h)
 	{
-		if (check_lower(&(*a), minnum, h) && (
-				check_lower(&((*a)->next), minnum, h) && (*a)->next->flag == h))
-		{
-			if ((*a)->content < minnum)
-				minnum = (*a)->content;
-			answ = push(&(*a), &(*b), answ, 0);
-		}
-		else if (check_lower(&(*a), minnum, h) && (!(check_lower(&((*a)->next), minnum, h)) && (*a)->next->flag == h))
+//		if (check_lower(&(*a), minnum, h) && (
+//				check_lower(&((*a)->next), minnum, h) && (*a)->next->flag == h))
+//		{
+//			if ((*a)->content < minnum)
+//				minnum = (*a)->content;
+//			answ = push(&(*a), &(*b), answ, 0);
+//		}
+		if (check_lower(&(*a), minnum, h) && (!(check_lower(&((*a)->next), minnum, h)) && (*a)->next->flag == h))
 		{
 			answ = swap(&(*a), answ, 0);
 			(*a)->flag = -1;
@@ -57,7 +57,12 @@ char 	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 			answ = rotate(&(*a), answ, 0);
 		}
 		else
+		{
+			if ((*a)->content < minnum)
+				minnum = (*a)->content;
 			answ = push(&(*a), &(*b), answ, 0);
+		}
+//			answ = push(&(*a), &(*b), answ, 0);
 	}
 	if ((*a)->flag == h)
 	{
@@ -66,7 +71,7 @@ char 	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 	}
 	if (ft_lstsize(*b) < 4)
 	{
-		answ = sort_five(ft_lstsize(*b), answ, &(*a), 1);
+		answ = sort_five(ft_lstsize(*b), answ, &(*b), 1);
 		while (ft_lstsize(*b) != 0)
 		{
 			(*b)->flag = -1;
@@ -90,13 +95,13 @@ char	*sort_list(int size, t_list **a, t_opelem zn, t_list **b)
 	else
 	{
 		answ = sort_six_swap(zn, &(*a), &(*b), answ);
-		answ = new_str(answ, "START SORT\n");
+//		answ = new_str(answ, "START SORT\n");
 		answ = sort_six_after_begin(zn, &(*a), &(*b), answ); // After this func i have massive with sorted end And usorted top
-		answ = new_str(answ, "AFTER AFTER BEGIN\n");
+	//	answ = new_str(answ, "AFTER AFTER BEGIN\n");
 		//// MAIN PART SORTING FIRST HALF
 		while ((*a)->flag != 0)
 			answ = main_sort(&(*a), &(*b), zn, answ);
-		answ = new_str(answ, "START SORT second part\n");
+	//	answ = new_str(answ, "START SORT second part\n");
 		//// END
 		////SORTING SECOND PART
 		help = *a;
@@ -117,16 +122,7 @@ char	*sort_list(int size, t_list **a, t_opelem zn, t_list **b)
 				zn.size++;
 		}
 		while (zn.size-- > 0)
-		{
-//			if ((*b)->content != zn.max)
-//			{
-//				r_rotate(&(*b), NULL, 1);
-//				r_rotate(&(*a), NULL, 0);
-//				answ = new_str(answ, "rrr\n");
-//			}
-//			else
 				answ = r_rotate(&(*a), answ, 0);
-		}
 		answ = sort_six_after_begin(zn, &(*a), &(*b),
 									answ);
 		while ((*a)->flag != -1)

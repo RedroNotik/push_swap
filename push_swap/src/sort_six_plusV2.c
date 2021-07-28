@@ -34,11 +34,6 @@ char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ)
 		(*b)->flag++;
 		if ((*b)->content > zn.mid)
 			answ = push(&(*b), &(*a), answ, 1);
-//		else if ((*b)->content == zn.min && (*b)->next)
-//		{
-//			answ = swap(&(*b), answ, 1);
-//			i--;
-//		}
 		else if ((*b)->next)
 			answ = rotate(&(*b), answ, 1);
 		i++;

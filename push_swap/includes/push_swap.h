@@ -35,7 +35,8 @@ char		*sort_list(int size, t_list **a, t_opelem zn, t_list **b);
 char 		*sort_five(int size, char *answ, t_list **a, int flag);
 t_opelem	min_max_mid(int num, t_list *st, t_opelem zn, int len);
 t_opelem	min_max(t_opelem zn, int num);
-
+int	cust_atoi(char *str, t_list *a);
+t_opelem	dup_finder(int num, t_list *st, t_opelem zn);
 //// NEW SORT
 char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ);
 char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ);
