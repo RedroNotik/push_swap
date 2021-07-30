@@ -70,7 +70,7 @@ t_opelem	parsing(int argc, char **argv, t_list **st)
 			zn.size++;
 			j++;
 		}
-		ft_free(str, j);
+		ft_free(str, --j);
 		i++;
 	}
 	zn.size--;
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 //			a = a->next;
 //		}
 //		printf("%d and flag: %d\n", a->content, a->flag);
-//		free_list(&a);
+		free_list(&a);
 		//// END CHECK
 	}
 	return 0;

@@ -29,12 +29,12 @@ char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ)
 	i = 0;
 	bsize = ft_lstsize(*b);
 	zn.min = min_l(&(*b));
-	while (i < bsize && (*b)->next)
+	while (i < bsize)
 	{
 		(*b)->flag++;
 		if ((*b)->content > zn.mid && ((*b)->content) != zn.min)
 			answ = push(&(*b), &(*a), answ, 1);
-		else if ((*b)->content == zn.min)
+		else if ((*b)->content == zn.min && (*b)->next)
 		{
 			(*b)->flag = -1;
 			answ = push(&(*b), &(*a), answ, 1);
@@ -85,3 +85,4 @@ int		check_lower(t_list **a, int minnum, int flag)
 	}
 	return	(0);
 }
+

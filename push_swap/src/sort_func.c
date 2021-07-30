@@ -108,9 +108,17 @@ char	*sort_list(int size, t_list **a, t_opelem zn, t_list **b)
 				zn.size++;
 		}
 		while (zn.size-- > 0)
+		{
+			if ((*b)->content != zn.min)
+			{
+				r_rotate(&(*b), NULL, 1);
+				r_rotate(&(*a), NULL, 1);
+				answ = new_str(answ, "rrr\n");
+			}
+			else
 				answ = r_rotate(&(*a), answ, 0);
-		answ = sort_six_after_begin(zn, &(*a), &(*b),
-									answ);
+		}
+		answ = sort_six_after_begin(zn, &(*a), &(*b), answ);
 		while ((*a)->flag != -1)
 			answ = main_sort(&(*a), &(*b), zn, answ);
 	}
