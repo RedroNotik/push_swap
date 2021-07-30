@@ -25,43 +25,26 @@ char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ)
 {
 	int bsize;
 	int i;
-	t_list *help;
 
 	i = 0;
 	bsize = ft_lstsize(*b);
-	while (i < bsize)
+	zn.min = min_l(&(*b));
+	while (i < bsize && (*b)->next)
 	{
 		(*b)->flag++;
-		if ((*b)->content > zn.mid)
+		if ((*b)->content > zn.mid && ((*b)->content) != zn.min)
 			answ = push(&(*b), &(*a), answ, 1);
+		else if ((*b)->content == zn.min)
+		{
+			(*b)->flag = -1;
+			answ = push(&(*b), &(*a), answ, 1);
+			answ = rotate(&(*a), answ, 0);
+			zn.min = min_l(&(*b));
+		}
 		else if ((*b)->next)
-			answ = rotate(&(*b), answ, 1);
+				answ = rotate(&(*b), answ, 1);
 		i++;
 	}
-	help = *b;
-	i = 0;
-	while (help->next)
-	{
-		if (help->content == zn.min)
-			break;
-		help = help->next;
-		i++;
-	}
-	if (help->content == zn.min)
-		i++;
-	if (i > bsize / 2)
-	{
-		while ((*b)->content != zn.min && (*b)->next)
-			answ = r_rotate(&(*b), answ, 1);
-	}
-	else
-	{
-		while ((*b)->content != zn.min && (*b)->next)
-			answ = rotate(&(*b), answ, 1);
-	}
-	(*b)->flag = -1;
-	answ = push(&(*b), &(*a), answ, 1);
-	answ = rotate(&(*a), answ, 0);
 	return (answ);
 }
 
@@ -102,4 +85,3 @@ int		check_lower(t_list **a, int minnum, int flag)
 	}
 	return	(0);
 }
-

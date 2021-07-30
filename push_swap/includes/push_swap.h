@@ -18,7 +18,7 @@ typedef struct s_opelem
 }	t_opelem;
 
 void	ft_free(char **arr, size_t i);
-int			min_l(t_list *a);
+int			min_l(t_list **a);
 void		error_msg(t_list *a);
 void		free_list(t_list **a);
 char		*new_str(char *old, char *add);
@@ -38,6 +38,7 @@ t_opelem	min_max(t_opelem zn, int num);
 int	cust_atoi(char *str, t_list *a);
 t_opelem	dup_finder(int num, t_list *st, t_opelem zn);
 //// NEW SORT
+int 	find_min(t_list *b, int min);
 char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ);
 char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ);
 char	*sort_six_swap(t_opelem zn, t_list **a, t_list **b, char *answ);

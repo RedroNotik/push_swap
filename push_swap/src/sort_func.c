@@ -38,13 +38,6 @@ char 	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 	int h = (*a)->flag;
 	while ((*a)->next && (*a)->flag == h)
 	{
-//		if (check_lower(&(*a), minnum, h) && (
-//				check_lower(&((*a)->next), minnum, h) && (*a)->next->flag == h))
-//		{
-//			if ((*a)->content < minnum)
-//				minnum = (*a)->content;
-//			answ = push(&(*a), &(*b), answ, 0);
-//		}
 		if (check_lower(&(*a), minnum, h) && (!(check_lower(&((*a)->next), minnum, h)) && (*a)->next->flag == h))
 		{
 			answ = swap(&(*a), answ, 0);
@@ -62,7 +55,6 @@ char 	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 				minnum = (*a)->content;
 			answ = push(&(*a), &(*b), answ, 0);
 		}
-//			answ = push(&(*a), &(*b), answ, 0);
 	}
 	if ((*a)->flag == h)
 	{
@@ -95,15 +87,9 @@ char	*sort_list(int size, t_list **a, t_opelem zn, t_list **b)
 	else
 	{
 		answ = sort_six_swap(zn, &(*a), &(*b), answ);
-//		answ = new_str(answ, "START SORT\n");
 		answ = sort_six_after_begin(zn, &(*a), &(*b), answ); // After this func i have massive with sorted end And usorted top
-	//	answ = new_str(answ, "AFTER AFTER BEGIN\n");
-		//// MAIN PART SORTING FIRST HALF
 		while ((*a)->flag != 0)
 			answ = main_sort(&(*a), &(*b), zn, answ);
-	//	answ = new_str(answ, "START SORT second part\n");
-		//// END
-		////SORTING SECOND PART
 		help = *a;
 		zn.size = 0;
 		while (help->flag == 0)

@@ -3,22 +3,45 @@
 //
 #include "../includes/push_swap.h"
 
-int			min_l(t_list *a)
+
+int 	find_min(t_list *b, int min)
 {
-	int help;
+	t_list *help;
+	int		bsize;
+	int 	i;
+
+	help = b;
+	i = 0;
+	bsize = ft_lstsize(help);
+	while (help->next)
+	{
+		if (help->content == min)
+			break;
+		help = help->next;
+		i++;
+	}
+	if (i <= (bsize / 2))
+		return (1);
+	else
+		return (0);
+}
+
+int			min_l(t_list **a)
+{
+	int		minnumb;
 	t_list *helpl;
 
-	help = a->content;
-	helpl = a;
+	minnumb = (*a)->content;
+	helpl = *a;
 	while (helpl->next)
 	{
-		if (help < helpl->content)
-			help = helpl->content;
+		if (minnumb > helpl->content)
+			minnumb = helpl->content;
 		helpl = helpl->next;
 	}
-	if (help < helpl->content)
-		help = helpl->content;
-	return (help);
+	if (minnumb > helpl->content)
+		minnumb = helpl->content;
+	return (minnumb);
 }
 
 t_opelem	min_max(t_opelem zn, int num)
