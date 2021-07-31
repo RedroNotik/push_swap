@@ -61,18 +61,20 @@ char 	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 		(*a)->flag = -1;
 		answ = rotate(&(*a), answ, 0);
 	}
-	if (ft_lstsize(*b) < 4)
-	{
-		answ = sort_five(ft_lstsize(*b), answ, &(*b), 1);
-		while (ft_lstsize(*b) != 0)
+	else{
+		if (ft_lstsize(*b) < 4)
 		{
-			(*b)->flag = -1;
-			answ = push(&(*b), &(*a), answ, 1);
-			answ = rotate(&(*a), answ, 0);
+			answ = sort_five(ft_lstsize(*b), answ, &(*b), 1);
+			while (ft_lstsize(*b) != 0)
+			{
+				(*b)->flag = -1;
+				answ = push(&(*b), &(*a), answ, 1);
+				answ = rotate(&(*a), answ, 0);
+			}
 		}
+		else
+			answ = sort_six_after_begin(zn, &(*a), &(*b), answ);
 	}
-	else
-		answ = sort_six_after_begin(zn, &(*a), &(*b), answ);
 	return (answ);
 }
 
