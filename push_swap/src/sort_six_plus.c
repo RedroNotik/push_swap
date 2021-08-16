@@ -1,72 +1,87 @@
-//
-// Created by Gaynell Hanh on 7/19/21.
-//
+////
+//// Created by Gaynell Hanh on 7/19/21.
+////
+
 #include "../includes/push_swap.h"
 
-
-
-char	*sort_six_plus(t_opelem zn, t_list **a, t_list **b, char *answ)
+char *set_flags(t_opelem zn, t_list **a, t_list **b, char *answ)
 {
-	t_list	*help;
+	int i;
 
-	help = *a;
-	int i = 0;
-	int j = 0;
-	int bsize = 1;
-
+	i = 0;
 	while (i < zn.size)
 	{
-		if (help->content <= zn.mid)
+		(*b)->flag++;
+		if ((*b)->content == zn.min && (*b)->next)
 		{
-			if (j < zn.size / 2)
-			{
-				while (j > 0)
-				{
-					answ = r_rotate(&(*a), answ, 0);
-					j--;
-				}
-			}
-			else
-			{
-				while (j > 0)
-				{
-					answ = rotate(&(*a), answ, 0);
-					j--;
-				}
-			}
-			(*a)->flag = 1;
-			answ = push(&(*a), &(*b), answ, 0);
+			(*b)->flag = -1;
+			answ = push(&(*b), &(*a), answ, 1);
+			answ = rotate(&(*a), answ, 0);
+			if ((*b)->next)
+				zn.min = min_l(&(*b));
+		}
+//		else if ((*b)->next && (*b)->next->content == zn.min)
+//		{
+//			answ = swap(&(*b), answ, 1);
+//		}
+		else if ((*b)->content > zn.mid)
+		{
+			answ = push(&(*b), &(*a), answ, 1);
+		//	i--;
 		}
 		else
 		{
-			j++;
-			help = help->next;
+		//	(*b)->flag++;
+			if ((*b)->next)
+				answ = rotate(&(*b), answ, 1);
+			i++;
 		}
-		i++;
 	}
-	while (j-- > 0)
-		answ = r_rotate(&(*a), answ, 0);
-	i = 0;
-	while (i < bsize)
+	return (answ);
+}
+
+
+char *making_flags(t_opelem zn, t_list **a, t_list **b, char *answ)
+{
+	zn.size = 1;
+	while (zn.size >= 1)
 	{
-		bsize = ft_lstsize(*b);
-		zn = min_max_mid((*b)->content, (*b), zn, bsize);
-		j = 0;
-		while (j < bsize)
+		zn.size = ft_lstsize(*b);
+		if (zn.size == 1)
 		{
-			if ((*b)->content > zn.mid)
-			{
-				(*b)->flag = 1;
-				answ = push(&(*b), &(*a), answ, 1);
-			}
-			else if ((*b)->next)
-				answ = rotate(&(*b), answ, 0);
-			j++;
+			(*b)->flag = -1;
+			answ = push(&(*b), &(*a), answ, 1);
+			answ = rotate(&(*a), answ, 0);
+			break;
 		}
-		i++;
+		zn = min_max_mid((*b)->content, *b, zn, zn.size);
+		answ = set_flags(zn, &(*a), &(*b), answ);
 	}
-	while ((*b)->content != zn.min && (*b)->next)
-		answ = rotate(&(*b), answ, 1);
-	answ = push(&(*b), &(*a), answ, 1);
+	return (answ);
+}
+
+char *checking_two_first_elem(t_opelem zn, t_list **a, t_list **b, char *answ)
+{
+	int flag;
+	int minnum;
+
+	minnum = (*a)->content;
+	flag = (*a)->flag;
+	while ((*a)->flag == flag)
+	{
+		if (!check_lower(&(*a), minnum, flag))
+		{
+			(*a)->flag = -1;
+			answ = rotate(&(*a), answ, 0);
+		}
+		else if ((*a)->next && (*a)->next->flag == flag &&!check_lower(&((*a)->next), minnum, flag))
+			answ = swap(&(*a), answ, 0);
+		else
+		{
+			if ((*a)->content < minnum)
+				minnum = (*a)->content;
+			answ = push(&(*a), &(*b), answ, 0);
+		}
+	}
 	return (answ);
 }

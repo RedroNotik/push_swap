@@ -32,17 +32,29 @@ char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ)
 	while (i < bsize)
 	{
 		(*b)->flag++;
-		if ((*b)->content > zn.mid && ((*b)->content) != zn.min)
-			answ = push(&(*b), &(*a), answ, 1);
-		else if ((*b)->content == zn.min && (*b)->next)
+		if ((*b)->content == zn.min && (*b)->next)
 		{
 			(*b)->flag = -1;
 			answ = push(&(*b), &(*a), answ, 1);
 			answ = rotate(&(*a), answ, 0);
 			zn.min = min_l(&(*b));
 		}
+//		else if ((*b)->next && (*b)->next->content == zn.min)
+//		{
+//			//(*b)->flag--;
+//			i--;
+//			answ = swap(&(*b), answ, 1);
+//		}
+		else if ((*b)->content > zn.mid && ((*b)->content) != zn.min)
+		{
+		///	(*b)->flag++;
+			answ = push(&(*b), &(*a), answ, 1);
+		}
 		else if ((*b)->next)
-				answ = rotate(&(*b), answ, 1);
+		{
+		//	(*b)->flag++;
+			answ = rotate(&(*b), answ, 1);
+		}
 		i++;
 	}
 	return (answ);
@@ -50,24 +62,24 @@ char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ)
 
 char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ)
 {
-	int bsize;
+		int bsize;
 
-	bsize = 2;
-	while (bsize > 1)
-	{
-		bsize = ft_lstsize(*b);
-		if (bsize == 1 || bsize == 0)
-			break;
-		zn = min_max_mid((*b)->content, *b, zn, bsize);
-		answ = sort_six_second(zn, &(*a), &(*b), answ);
-	}
-	if (bsize > 0)
-	{
-		(*b)->flag = -1;
-		answ = push(&(*b), &(*a), answ, 1);
-		answ = rotate(&(*a), answ, 0);
-	}
-	return (answ);
+		bsize = 2;
+		while (bsize > 1)
+		{
+			bsize = ft_lstsize(*b);
+			if (bsize == 1 || bsize == 0)
+				break;
+			zn = min_max_mid((*b)->content, *b, zn, bsize);
+			answ = sort_six_second(zn, &(*a), &(*b), answ);
+		}
+		if (bsize > 0)
+		{
+
+		//	(*b)->flag++;
+			answ = push(&(*b), &(*a), answ, 1);
+		}
+		return (answ);
 }
 
 int		check_lower(t_list **a, int minnum, int flag)

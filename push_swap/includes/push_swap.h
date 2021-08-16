@@ -43,5 +43,8 @@ char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ);
 char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ);
 char	*sort_six_swap(t_opelem zn, t_list **a, t_list **b, char *answ);
 int		check_lower(t_list **a, int minnum, int flag);
-////
+////SECOND NEW
+char *making_flags(t_opelem zn, t_list **a, t_list **b, char *answ);
+char *set_flags(t_opelem zn, t_list **a, t_list **b, char *answ);
+char *checking_two_first_elem(t_opelem zn, t_list **a, t_list **b, char *answ);
 #endif //PUSH_SWAP_PUSH_SWAP_H
