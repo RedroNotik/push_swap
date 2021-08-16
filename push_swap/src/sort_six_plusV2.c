@@ -75,8 +75,6 @@ char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ)
 		}
 		if (bsize > 0)
 		{
-
-		//	(*b)->flag++;
 			answ = push(&(*b), &(*a), answ, 1);
 		}
 		return (answ);

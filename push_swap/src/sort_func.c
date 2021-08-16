@@ -36,35 +36,36 @@ char 	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 {
 	int minnum = (*a)->content;
 	int h = (*a)->flag;
-	while ((*a)->next && (*a)->flag == h)
-	{
-		if (check_lower(&(*a), minnum, h) && (!(check_lower(&((*a)->next), minnum, h)) && (*a)->next->flag == h))
-		{
-			answ = swap(&(*a), answ, 0);
-			(*a)->flag = -1;
-			answ = rotate(&(*a), answ, 0);
-		}
-		else if (!check_lower(&(*a), minnum, h))
-		{
-			(*a)->flag = -1;
-			answ = rotate(&(*a), answ, 0);
-		}
-		else
-		{
-			if ((*a)->content < minnum)
-				minnum = (*a)->content;
-			answ = push(&(*a), &(*b), answ, 0);
-		}
-	}
-	if ((*a)->flag == h && (*a)->content < minnum)
-	{
-		(*a)->flag = -1;
-		answ = rotate(&(*a), answ, 0);
-	}
-	else if ((*a)->flag == h)
-		answ = push(&(*a), &(*b), answ, 0);
-	else
-	{
+	answ = checking_two_first_elem(zn, &(*a), &(*b), answ);
+////	while ((*a)->next && (*a)->flag == h)
+////	{
+////		if (check_lower(&(*a), minnum, h) && (!(check_lower(&((*a)->next), minnum, h)) && (*a)->next->flag == h))
+////		{
+////			answ = swap(&(*a), answ, 0);
+////			(*a)->flag = -1;
+////			answ = rotate(&(*a), answ, 0);
+////		}
+////		else if (!check_lower(&(*a), minnum, h))
+////		{
+////			(*a)->flag = -1;
+////			answ = rotate(&(*a), answ, 0);
+////		}
+////		else
+////		{
+////			if ((*a)->content < minnum)
+////				minnum = (*a)->content;
+////			answ = push(&(*a), &(*b), answ, 0);
+////		}
+////	}
+////	if ((*a)->flag == h && (*a)->content < minnum)
+////	{
+////		(*a)->flag = -1;
+////		answ = rotate(&(*a), answ, 0);
+////	}
+////	else if ((*a)->flag == h)
+////		answ = push(&(*a), &(*b), answ, 0);
+////	else
+////	{
 		if (ft_lstsize(*b) < 4)
 		{
 			answ = sort_five(ft_lstsize(*b), answ, &(*b), 1);
@@ -79,10 +80,73 @@ char 	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 		else
 			//answ = making_flags(zn, &(*a), &(*b), answ);
 			answ = sort_six_after_begin(zn, &(*a), &(*b), answ);
-	}
+	//}
 	return (answ);
 }
 
+char *set_flags2(t_opelem zn, t_list **a, t_list **b, char *answ)
+{
+	int i;
+
+	i = 0;
+
+	while (i < zn.size)
+	{
+		if ((*b)->content == zn.min && (*b)->next)
+		{
+			(*b)->flag = -1;
+			answ = push(&(*b), &(*a), answ, 1);
+			answ = rotate(&(*a), answ, 0);
+			if ((*b)->next)
+			{
+				zn.min = min_l(&(*b));
+			}
+		}
+		else if ((*b)->next && (*b)->next->content == zn.min)
+		{
+			answ = swap(&(*b), answ, 1);
+			i--;
+		}
+		else if ((*b)->next && (*b)->content > zn.mid)
+		{
+			answ = push(&(*b), &(*a), answ, 1);
+		//	i++;
+		}
+		else
+		{
+			i++;
+			if ((*b)->next)
+				answ = rotate(&(*b), answ, 1);
+		}
+	}
+	return (answ);
+}
+char *making_flags2(t_opelem zn, t_list **a, t_list **b, char *answ)
+{
+	t_list *help;
+
+	zn.size = 1;
+	while (zn.size >= 1)
+	{
+		zn.size = ft_lstsize(*b);
+		help = *b;
+		while (help != NULL)
+		{
+			help->flag++;
+			help = help->next;
+		}
+		if (zn.size == 1)
+		{
+			(*b)->flag = -1;
+			answ = push(&(*b), &(*a), answ, 1);
+			answ = rotate(&(*a), answ, 0);
+			break;
+		}
+		zn = min_max_mid((*b)->content, *b, zn, zn.size);
+		answ = set_flags2(zn, &(*a), &(*b), answ);
+	}
+	return (answ);
+}
 char	*sort_list(int size, t_list **a, t_opelem zn, t_list **b)
 {
 	char	*answ;
@@ -94,16 +158,27 @@ char	*sort_list(int size, t_list **a, t_opelem zn, t_list **b)
 	else
 	{
 		answ = sort_six_swap(zn, &(*a), &(*b), answ);
-	//	answ = making_flags(zn, &(*a), &(*b), answ);
-		answ = sort_six_after_begin(zn, &(*a), &(*b), answ); // After this func i have massive with sorted end And usorted top
+		answ = making_flags(zn, &(*a), &(*b), answ);
+		//answ = sort_six_after_begin(zn, &(*a), &(*b), answ); // After this func i have massive with sorted end And usorted top
 		///// OLD SORT
-//		while ((*a)->flag != -1)
-//		{
-//			answ = checking_two_first_elem(zn, &(*a), &(*b), answ);
-////			answ = making_flags(zn, &(*a), &(*b), answ);
-//		}
 		while ((*a)->flag != -1)
-			answ = main_sort(&(*a), &(*b), zn, answ);
+		{
+			answ = checking_two_first_elem(zn, &(*a), &(*b), answ);
+			if (ft_lstsize(*b) < 4)
+			{
+				answ = sort_five(ft_lstsize(*b), answ, &(*b), 1);
+				while (ft_lstsize(*b) != 0)
+				{
+					(*b)->flag = -1;
+					answ = push(&(*b), &(*a), answ, 1);
+					answ = rotate(&(*a), answ, 0);
+				}
+			}
+			else
+				answ = making_flags2(zn, &(*a), &(*b), answ);
+		}
+//		while ((*a)->flag != -1)
+//			answ = main_sort(&(*a), &(*b), zn, answ);
 //		help = *a;
 //		zn.size = 0;
 //		while (help->flag == 0)
