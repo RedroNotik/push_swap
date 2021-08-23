@@ -21,78 +21,92 @@ char	*sort_six_swap(t_opelem zn, t_list **a, t_list **b, char *answ)
 	return (answ);
 }
 
+char	*if_func(t_opelem *zn, t_list **a, t_list **b, char *answ)
+{
+	if ((*b)->content == zn->min && (*b)->next)
+	{
+		(*b)->flag = -1;
+		answ = push(&(*b), &(*a), answ, 1);
+		if ((*b)->content < zn->from)
+			zn->min = min_l(&(*b));
+		if ((*b)->next && (*b)->content != zn->min && (*b)->content <= zn->mid)
+		{
+			(*b)->flag++;
+			zn->to++;
+			answ = rrotate(&(*a), &(*b), answ);
+		}
+		else
+			answ = rotate(&(*a), answ, 0);
+	}
+	else if ((*b)->content > zn->mid && ((*b)->content) != zn->min)
+	{
+		zn->from = (*b)->content;
+		answ = push(&(*b), &(*a), answ, 1);
+	}
+	else if ((*b)->next)
+		answ = rotate(&(*b), answ, 1);
+	return (answ);
+}
+
 char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ)
 {
-	int bsize;
-	int i;
+	int	bsize;
 
-	i = 0;
 	bsize = ft_lstsize(*b);
-	zn.min = min_l(&(*b));
-	while (i < bsize)
+	zn.from = (*b)->content;
+	zn.to = 0;
+	while (zn.to < bsize)
 	{
 		(*b)->flag++;
-		if ((*b)->content == zn.min && (*b)->next)
-		{
-			(*b)->flag = -1;
-			answ = push(&(*b), &(*a), answ, 1);
-			answ = rotate(&(*a), answ, 0);
-			zn.min = min_l(&(*b));
-		}
-//		else if ((*b)->next && (*b)->next->content == zn.min)
-//		{
-//			//(*b)->flag--;
-//			i--;
-//			answ = swap(&(*b), answ, 1);
-//		}
-		else if ((*b)->content > zn.mid && ((*b)->content) != zn.min)
-		{
-		///	(*b)->flag++;
-			answ = push(&(*b), &(*a), answ, 1);
-		}
-		else if ((*b)->next)
-		{
-		//	(*b)->flag++;
-			answ = rotate(&(*b), answ, 1);
-		}
-		i++;
+		answ = if_func(&zn, &(*a), &(*b), answ);
+		zn.to++;
 	}
 	return (answ);
 }
 
-char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ)
+char	*sort_six_after(t_opelem zn, t_list **a, t_list **b, char *answ)
 {
-		int bsize;
+	int	bsize;
 
-		bsize = 2;
-		while (bsize > 1)
-		{
-			bsize = ft_lstsize(*b);
-			if (bsize == 1 || bsize == 0)
-				break;
-			zn = min_max_mid((*b)->content, *b, zn, bsize);
-			answ = sort_six_second(zn, &(*a), &(*b), answ);
-		}
-		if (bsize > 0)
-		{
-			answ = push(&(*b), &(*a), answ, 1);
-		}
-		return (answ);
-}
-
-int		check_lower(t_list **a, int minnum, int flag)
-{
-	t_list *help;
-
-	help = *a;
-	if (help->content > minnum)
-		return (1);
-	while (help->next && help->flag == flag && help->next->flag == flag)
+	bsize = 2;
+	while (bsize > 1)
 	{
-		if ((*a)->content > help->next->content)
-			return (1);
-		help = help->next;
+		bsize = ft_lstsize(*b);
+		if (bsize == 1 || bsize == 0)
+			break ;
+		zn = min_max_mid((*b)->content, *b, zn, bsize);
+		answ = sort_six_second(zn, &(*a), &(*b), answ);
 	}
-	return	(0);
+	if (bsize > 0)
+		answ = push(&(*b), &(*a), answ, 1);
+	return (answ);
 }
 
+char	*checking_two(t_opelem zn, t_list **a, t_list **b, char *ans)
+{
+	int	minnum;
+
+	minnum = (*a)->content;
+	while ((*a)->flag == zn.from)
+	{
+		if (!check_lower(&(*a), minnum, zn.from))
+		{
+			minnum = (*a)->content + 1;
+			(*a)->flag = -1;
+			if ((*b) && (*b)->next && (*b)->content != zn.min)
+				ans = rrotate(&(*a), &(*b), ans);
+			else
+				ans = rotate(&(*a), ans, 0);
+		}
+		else if ((*a)->next && (*a)->next->flag == zn.from
+			&& !check_lower(&((*a)->next), minnum, zn.from))
+			ans = swap(&(*a), ans, 0);
+		else if ((*a)->flag == zn.from)
+		{
+			if ((*a)->content < minnum)
+				minnum = (*a)->content;
+			ans = push(&(*a), &(*b), ans, 0);
+		}
+	}
+	return (ans);
+}

@@ -87,6 +87,63 @@ t_opelem	parsing(int argc, char **argv, t_list **st)
 	return (zn);
 }
 
+int set_order(t_list **a, int size)
+{
+	int		*mas;
+	t_list *help;
+	int 	i;
+	int 	j;
+	int 	tmp;
+	i = 0;
+	help = *a;
+	mas = malloc(sizeof(int *) * size);
+	while (help != NULL)
+	{
+		mas[i] = help->content;
+		help = help->next;
+		i++;
+	}
+	i = 0;
+	while (i < size)
+	{
+		j = 0;
+		while (j < size)
+		{
+			if (mas[i] < mas[j])
+			{
+				tmp = mas[i];
+				mas[i] = mas[j];
+				mas[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+	help = *a;
+	i = 0;
+	while (help != NULL)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (help->content == mas[i])
+				help->content= i + 1;
+			i++;
+		}
+		help = help->next;
+	}
+	free(mas);
+
+//	i = 0;
+//	while(i < size)
+//	{
+//	printf("numb %d is %d\n", i, mas[i]);
+//		i++;
+//	}
+	return (1);
+}
+
+
 int	main(int argc, char **argv)
 {
 	t_list		*a;
@@ -103,19 +160,21 @@ int	main(int argc, char **argv)
 			free_list(&a);
 			return (0);
 		}
+		else
+			set_order(&a, zn.size);
 		answ = sort_list(zn.size, &a, zn, &b);
-		//printf("%s", answ);
+		printf("%s", answ);
 		free(answ);
-		// CHECK
-		printf("%d SIZE\n", ft_lstsize(a));
-		while (a->next)
-		{
-			printf("%d and flag: %d\n", a->content, a->flag);
-			if (a->content > a->next->content)
-				printf("VERY BAD\n");
-			a = a->next;
-		}
-		printf("%d and flag: %d\n", a->content, a->flag);
+//		//// CHECK
+//		printf("%d SIZE\n", ft_lstsize(a));
+//		while (a->next)
+//		{
+//			printf("%d and flag: %d\n", a->content, a->flag);
+//			if (a->content > a->next->content)
+//				printf("VERY BAD\n");
+//			a = a->next;
+//		}
+//		printf("%d and flag: %d\n", a->content, a->flag);
 		free_list(&a);
 		//// END CHECK
 	}

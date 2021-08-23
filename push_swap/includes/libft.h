@@ -41,7 +41,7 @@ void	ft_putnbr_fd(int n, int fd);
 typedef struct s_list
 {
 	int				content;
-	int 			flag;
+	int				flag;
 	struct s_list	*next;
 
 }				t_list;

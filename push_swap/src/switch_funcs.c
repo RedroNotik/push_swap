@@ -3,6 +3,14 @@
 //
 #include "../includes/push_swap.h"
 
+char	*rrotate(t_list **a, t_list **b, char *answ)
+{
+	rotate(&(*a), NULL, 0);
+	rotate(&(*b), NULL, 1);
+	answ = new_str(answ, "rr\n");
+	return (answ);
+}
+
 char	*push(t_list **from, t_list **to, char *str, int b)
 {
 	t_list	*tmp;

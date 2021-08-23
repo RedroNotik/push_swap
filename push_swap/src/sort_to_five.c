@@ -44,53 +44,45 @@ char	*three_elem(t_list **a, char *answ, int b)
 	return (answ);
 }
 
-char	*four_elem(t_list **a, t_list **b, char *answ, int flag)
+t_opelem	return_flag(t_opelem zn, int flag)
 {
-	t_opelem zn;
-	int from;
-	int to;
-
 	if (flag == 1)
 	{
-		from = 1;
-		to = 0;
+		zn.from = 1;
+		zn.to = 0;
 	}
 	else
 	{
-		from = 0;
-		to = 1;
+		zn.from = 0;
+		zn.to = 1;
 	}
+	return (zn);
+}
+
+char	*four_elem(t_list **a, t_list **b, char *answ, int flag)
+{
+	t_opelem	zn;
+
+	zn = return_flag(zn, flag);
 	zn = min_max_mid((*a)->content, (*a), zn, ft_lstsize(*a));
 	while ((*a)->content != zn.min)
-		answ = r_rotate(&(*a), answ, from);
-	answ = push(&(*a), &(*b), answ, from);
-	answ = three_elem(&(*a), answ, from);
-	answ = push(&(*b), &(*a), answ, to);
+		answ = r_rotate(&(*a), answ, zn.from);
+	answ = push(&(*a), &(*b), answ, zn.from);
+	answ = three_elem(&(*a), answ, zn.from);
+	answ = push(&(*b), &(*a), answ, zn.to);
 	return (answ);
 }
 
 char	*five_elem(t_list **a, t_list **b, char *answ, int flag)
 {
-	t_list	*help;
+	t_list		*help;
+	t_opelem	zn;
 
-	t_opelem zn;
-	int from;
-	int to;
-
-	if (flag == 1)
-	{
-		from = 1;
-		to = 0;
-	}
-	else
-	{
-		from = 0;
-		to = 1;
-	}
+	zn = return_flag(zn, flag);
 	zn = min_max_mid((*a)->content, (*a), zn, ft_lstsize(*a));
 	while ((*a)->content != zn.min)
-		answ = rotate(&(*a), answ, from);
-	answ = push(&(*a), &(*b), answ, from);
+		answ = rotate(&(*a), answ, zn.from);
+	answ = push(&(*a), &(*b), answ, zn.from);
 	zn.min = (*a)->content;
 	help = *a;
 	while (help->next)
@@ -102,6 +94,6 @@ char	*five_elem(t_list **a, t_list **b, char *answ, int flag)
 	if (help->content < zn.min)
 		zn.min = help->content;
 	answ = four_elem(a, b, answ, flag);
-	answ = push(&(*b), &(*a), answ, to);
+	answ = push(&(*b), &(*a), answ, zn.to);
 	return (answ);
 }

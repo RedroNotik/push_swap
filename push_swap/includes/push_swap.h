@@ -15,36 +15,42 @@ typedef struct s_opelem
 	int	max;
 	int	min;
 	int	mid;
+	int	from;
+	int	to;
 }	t_opelem;
 
-void	ft_free(char **arr, size_t i);
+void		ft_free(char **arr, size_t i);
 int			min_l(t_list **a);
 void		error_msg(t_list *a);
 void		free_list(t_list **a);
 char		*new_str(char *old, char *add);
+
+////SWITCH_FUCN
+char		*rrotate(t_list **a, t_list **b, char *answ);
 char		*push(t_list **from, t_list **to, char *str, int b);
 char		*rotate(t_list **st, char *str, int b);
 char		*r_rotate(t_list **st, char *str, int b);
 char		*swap(t_list **st, char *str, int b);
+////END SWITCH
+////FIVE ELEM
 char		*two_elem(t_list **a, char *answ, int b);
 char		*three_elem(t_list **a, char *answ, int b);
 char		*four_elem(t_list **a, t_list **b, char *answ, int flag);
 char		*five_elem(t_list **a, t_list **b, char *answ, int flag);
+////END
 char		*sort_six_plus(t_opelem zn, t_list **a, t_list **b, char *answ);
 char		*sort_list(int size, t_list **a, t_opelem zn, t_list **b);
-char 		*sort_five(int size, char *answ, t_list **a, int flag);
+char		*sort_five(int size, char *answ, t_list **a, int flag);
 t_opelem	min_max_mid(int num, t_list *st, t_opelem zn, int len);
 t_opelem	min_max(t_opelem zn, int num);
-int	cust_atoi(char *str, t_list *a);
+int			cust_atoi(char *str, t_list *a);
 t_opelem	dup_finder(int num, t_list *st, t_opelem zn);
 //// NEW SORT
-int 	find_min(t_list *b, int min);
-char	*sort_six_after_begin(t_opelem zn, t_list **a, t_list **b, char *answ);
-char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ);
-char	*sort_six_swap(t_opelem zn, t_list **a, t_list **b, char *answ);
-int		check_lower(t_list **a, int minnum, int flag);
+int			find_min(t_list *b, int min);
+char		*sort_six_after(t_opelem zn, t_list **a, t_list **b, char *answ);
+char		*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ);
+char		*sort_six_swap(t_opelem zn, t_list **a, t_list **b, char *answ);
+int			check_lower(t_list **a, int minnum, int flag);
 ////SECOND NEW
-char *making_flags(t_opelem zn, t_list **a, t_list **b, char *answ);
-char *set_flags(t_opelem zn, t_list **a, t_list **b, char *answ);
-char *checking_two_first_elem(t_opelem zn, t_list **a, t_list **b, char *answ);
+char		*checking_two(t_opelem zn, t_list **a, t_list **b, char *ans);
 #endif //PUSH_SWAP_PUSH_SWAP_H

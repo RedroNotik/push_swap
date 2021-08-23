@@ -3,12 +3,11 @@
 //
 #include "../includes/push_swap.h"
 
-
-int 	find_min(t_list *b, int min)
+int	find_min(t_list *b, int min)
 {
-	t_list *help;
+	t_list	*help;
 	int		bsize;
-	int 	i;
+	int		i;
 
 	help = b;
 	i = 0;
@@ -16,7 +15,7 @@ int 	find_min(t_list *b, int min)
 	while (help->next)
 	{
 		if (help->content == min)
-			break;
+			break ;
 		help = help->next;
 		i++;
 	}
@@ -26,10 +25,10 @@ int 	find_min(t_list *b, int min)
 		return (0);
 }
 
-int			min_l(t_list **a)
+int	min_l(t_list **a)
 {
 	int		minnumb;
-	t_list *helpl;
+	t_list	*helpl;
 
 	minnumb = (*a)->content;
 	helpl = *a;
@@ -71,4 +70,20 @@ t_opelem	min_max_mid(int num, t_list *st, t_opelem zn, int len)
 	zn = min_max(zn, num);
 	zn.mid = ((zn.max - zn.min) / 2) + zn.min;
 	return (zn);
+}
+
+int	check_lower(t_list **a, int minnum, int flag)
+{
+	t_list	*help;
+
+	help = *a;
+	if (help->content > minnum)
+		return (1);
+	while (help->next && help->flag == flag && help->next->flag == flag)
+	{
+		if ((*a)->content > help->next->content)
+			return (1);
+		help = help->next;
+	}
+	return (0);
 }
