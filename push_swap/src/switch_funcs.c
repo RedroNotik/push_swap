@@ -51,7 +51,7 @@ char	*rotate(t_list **st, char *str, int b)
 	t_list	*tmp;
 	t_list	*help;
 
-	if (!(*st)|| !(*st)->next)
+	if (!(*st) || !(*st)->next)
 		return (str);
 	help = *st;
 	if (b == 0)

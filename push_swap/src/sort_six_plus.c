@@ -38,14 +38,7 @@ char	*if_func(t_opelem *zn, t_list **a, t_list **b, char *answ)
 		answ = push(&(*b), &(*a), answ, 1);
 		if ((*b)->content < zn->from)
 			zn->min = min_l(&(*b));
-		if ((*b)->next && (*b)->content != zn->min && (*b)->content < zn->mid)
-		{
-			(*b)->flag++;
-			zn->to++;
-			answ = rrotate(&(*a), &(*b), answ);
-		}
-		else
-			answ = rotate(&(*a), answ, 0);
+		answ = rotate(&(*a), answ, 0);
 	}
 	else if ((*b)->content > zn->mid && ((*b)->content) != zn->min)
 	{
@@ -87,7 +80,9 @@ char	*sort_six_after(t_opelem zn, t_list **a, t_list **b, char *answ)
 		answ = sort_six_second(zn, &(*a), &(*b), answ);
 	}
 	if (bsize > 0)
+	{
 		answ = push(&(*b), &(*a), answ, 1);
+	}
 	return (answ);
 }
 
@@ -102,7 +97,6 @@ char	*checking_two(t_opelem zn, t_list **a, t_list **b, char *ans)
 		{
 			minnum = (*a)->content + 1;
 			(*a)->flag = -1;
-			printf("a --- %d\n", (*a)->content);
 			if ((*b) && (*b)->next && (*b)->content != zn.min)
 				ans = rrotate(&(*a), &(*b), ans);
 			else

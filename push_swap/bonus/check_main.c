@@ -8,7 +8,6 @@ void	error_a_b(t_list *a, t_list *b, int flag)
 {
 	free_list(&a);
 	free_list(&b);
-
 	if (flag == 1)
 		ft_putstr_fd("Error\n", 6, 2);
 	else if (flag == 2)
