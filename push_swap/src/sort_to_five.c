@@ -63,6 +63,7 @@ char	*four_elem(t_list **a, t_list **b, char *answ, int flag)
 {
 	t_opelem	zn;
 
+	zn.from = 0;
 	zn = return_flag(zn, flag);
 	zn = min_max_mid((*a)->content, (*a), zn, ft_lstsize(*a));
 	while ((*a)->content != zn.min)
@@ -78,6 +79,7 @@ char	*five_elem(t_list **a, t_list **b, char *answ, int flag)
 	t_list		*help;
 	t_opelem	zn;
 
+	zn.from = 0;
 	zn = return_flag(zn, flag);
 	zn = min_max_mid((*a)->content, (*a), zn, ft_lstsize(*a));
 	while ((*a)->content != zn.min)

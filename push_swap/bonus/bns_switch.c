@@ -1,3 +1,9 @@
+//
+// Created by Gaynell Hanh on 8/24/21.
+//
+
+#include "../includes/push_swap.h"
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -29,13 +35,11 @@ char	*push(t_list **from, t_list **to, char *str, int b)
 	t_list	*helpa;
 	t_list	*helpb;
 
-	if (!(*from))
-		return (str);
 	helpa = *from;
 	helpb = *to;
 	if (b == 0)
 		str = new_str(str, "pb\n");
-	else if (b == 1)
+	else
 		str = new_str(str, "pa\n");
 	tmp = *from;
 	helpa = helpa->next;
@@ -51,12 +55,10 @@ char	*rotate(t_list **st, char *str, int b)
 	t_list	*tmp;
 	t_list	*help;
 
-	if (!(*st)|| !(*st)->next)
-		return (str);
 	help = *st;
 	if (b == 0)
 		str = new_str(str, "ra\n");
-	else if (b == 1)
+	else
 		str = new_str(str, "rb\n");
 	tmp = *st;
 	while (help->next)
@@ -72,11 +74,9 @@ char	*r_rotate(t_list **st, char *str, int b)
 	t_list	*tmp;
 	t_list	*prev;
 
-	if (!(*st) || !(*st)->next)
-		return (str);
 	if (b == 0)
 		str = new_str(str, "rra\n");
-	else if (b == 1)
+	else
 		str = new_str(str, "rrb\n");
 	tmp = *st;
 	while ((*st)->next)
@@ -95,11 +95,9 @@ char	*swap(t_list **st, char *str, int b)
 	t_list	*hlp;
 	t_list	*hlp2;
 
-	if (!(*st))
-		return (str);
 	if (b == 0)
 		str = new_str(str, "sa\n");
-	else if (b == 1)
+	else
 		str = new_str(str, "sb\n");
 	tmp = *st;
 	hlp = tmp->next;

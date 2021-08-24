@@ -1,29 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   min_max.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ghanh <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/24 03:02:10 by ghanh             #+#    #+#             */
+/*   Updated: 2021/08/24 03:02:11 by ghanh            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //
 // Created by Gaynell Hanh on 7/16/21.
 //
 #include "../includes/push_swap.h"
-
-int	find_min(t_list *b, int min)
-{
-	t_list	*help;
-	int		bsize;
-	int		i;
-
-	help = b;
-	i = 0;
-	bsize = ft_lstsize(help);
-	while (help->next)
-	{
-		if (help->content == min)
-			break ;
-		help = help->next;
-		i++;
-	}
-	if (i <= (bsize / 2))
-		return (1);
-	else
-		return (0);
-}
 
 int	min_l(t_list **a)
 {

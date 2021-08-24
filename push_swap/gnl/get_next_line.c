@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "../includes/get_next_line.h"
 
 static	int	find_line(int fd, char **line, char **fdlist, char *tmp2)
 {

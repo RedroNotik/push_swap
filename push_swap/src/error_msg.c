@@ -3,6 +3,12 @@
 //
 #include "../includes/push_swap.h"
 
+void	end_without_error(t_list *a)
+{
+	free_list(&a);
+	exit(0);
+}
+
 void	error_msg(t_list *a)
 {
 	free_list(&a);

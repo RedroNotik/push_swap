@@ -1,8 +1,8 @@
 #include "../includes/libft.h"
 
-void	ft_free(char **arr, size_t i)
+void	ft_free(char **arr, int i)
 {
-	while (i)
+	while (i > -1)
 		free(arr[i--]);
 	free(arr);
 }

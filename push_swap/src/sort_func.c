@@ -4,14 +4,6 @@
 
 #include "../includes/push_swap.h"
 
-int	min(int a, int b)
-{
-	if (a > b)
-		return (b);
-	else
-		return (a);
-}
-
 char	*sort_five(int size, char *answ, t_list **a, int flag)
 {
 	t_list	*b;
@@ -19,6 +11,7 @@ char	*sort_five(int size, char *answ, t_list **a, int flag)
 
 	help = *a;
 	b = NULL;
+	size = ft_lstsize(*a);
 	if (size == 2)
 		answ = two_elem(&help, answ, flag);
 	else if (size == 3)
@@ -35,18 +28,7 @@ char	*main_sort(t_list **a, t_list **b, t_opelem zn, char *answ)
 {
 	zn.from = (*a)->flag;
 	answ = checking_two(zn, &(*a), &(*b), answ);
-	if (ft_lstsize(*b) < 6)
-	{
-		answ = sort_five(ft_lstsize(*b), answ, &(*b), 1);
-		while (ft_lstsize(*b) != 0)
-		{
-			(*b)->flag = -1;
-			answ = push(&(*b), &(*a), answ, 1);
-			answ = rotate(&(*a), answ, 0);
-		}
-	}
-	else
-		answ = sort_six_after(zn, &(*a), &(*b), answ);
+	answ = sort_six_after(zn, &(*a), &(*b), answ);
 	return (answ);
 }
 
