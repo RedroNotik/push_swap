@@ -9,7 +9,7 @@ static int	check_lenght(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] != ' ' && str[i] != '\0' && str[i])
 		i++;
 	if (i > 10)
 		return (1);
