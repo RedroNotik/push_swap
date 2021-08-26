@@ -39,6 +39,7 @@ clean :
 fclean : clean
 	@make fclean -C ./bonus/
 	@make fclean -C ./libft/
+	@rm -f checker
 	@rm -f $(NAME)
 	@echo "\033[90m[\033[31mDelete\033[90m]"
 
