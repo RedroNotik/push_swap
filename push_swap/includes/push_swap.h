@@ -52,9 +52,12 @@ t_opelem	min_max(t_opelem zn, int num);
 char		*sort_six_after(t_opelem zn, t_list **a, t_list **b, char *answ);
 char		*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ);
 char		*sort_six_swap(t_opelem zn, t_list **a, t_list **b, char *answ);
-int			check_lower(t_list **a, int minnum, int flag);
+int			check_lower(t_list **a, int numb, int minnum, int flag);
 char		*checking_two(t_opelem zn, t_list **a, t_list **b, char *ans);
 int			set_order(t_list **a, int size);
+//// FOR NORMINETTE
+char		*help_func1(t_opelem *zn, t_list **a, t_list **b, char *ans);
+char		*help_func2(t_opelem *zn, t_list **a, t_list **b, char *ans);
 //// CHECKER
 int			if_case(char *line, t_list **a, t_list **b);
 void		error_a_b(t_list *a, t_list *b, int flag);

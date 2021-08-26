@@ -38,7 +38,15 @@ char	*if_func(t_opelem *zn, t_list **a, t_list **b, char *answ)
 		answ = push(&(*b), &(*a), answ, 1);
 		if ((*b)->content < zn->from)
 			zn->min = min_l(&(*b));
-		answ = rotate(&(*a), answ, 0);
+		if ((*b)->next && (*b)->content != zn->min && (*b)->content < zn->mid
+			&& (zn->to + 1) < zn->size)
+		{
+			(*b)->flag++;
+			zn->to++;
+			answ = rrotate(&(*a), &(*b), answ);
+		}
+		else
+			answ = rotate(&(*a), answ, 0);
 	}
 	else if ((*b)->content > zn->mid && ((*b)->content) != zn->min)
 	{
@@ -52,12 +60,10 @@ char	*if_func(t_opelem *zn, t_list **a, t_list **b, char *answ)
 
 char	*sort_six_second(t_opelem zn, t_list **a, t_list **b, char *answ)
 {
-	int	bsize;
-
-	bsize = ft_lstsize(*b);
+	zn.size = ft_lstsize(*b);
 	zn.from = (*b)->content;
 	zn.to = 0;
-	while (zn.to < bsize)
+	while (zn.to < zn.size)
 	{
 		(*b)->flag++;
 		answ = if_func(&zn, &(*a), &(*b), answ);
@@ -82,33 +88,32 @@ char	*sort_six_after(t_opelem zn, t_list **a, t_list **b, char *answ)
 	if (bsize > 0)
 	{
 		answ = push(&(*b), &(*a), answ, 1);
+		if ((*a)->content == zn.min)
+		{
+			(*a)->flag = -1;
+			answ = rotate(&(*a), answ, 0);
+		}
 	}
 	return (answ);
 }
 
 char	*checking_two(t_opelem zn, t_list **a, t_list **b, char *ans)
 {
-	int	minnum;
-
-	minnum = (*a)->content;
+	zn.to = (*a)->content;
 	while ((*a)->flag == zn.from)
 	{
-		if (!check_lower(&(*a), minnum, zn.from))
-		{
-			minnum = (*a)->content + 1;
-			(*a)->flag = -1;
-			if ((*b) && (*b)->next && (*b)->content != zn.min)
-				ans = rrotate(&(*a), &(*b), ans);
-			else
-				ans = rotate(&(*a), ans, 0);
-		}
+		if (!check_lower(&(*a), (*a)->content, zn.to, zn.from))
+			ans = help_func1(&zn, &(*a), &(*b), ans);
+		else if ((*b) && (*b)->content == zn.to
+			&& !check_lower(&(*a), (*b)->content, (*b)->content, zn.from))
+			ans = help_func2(&zn, &(*a), &(*b), ans);
 		else if ((*a)->next && (*a)->next->flag == zn.from
-			&& !check_lower(&((*a)->next), minnum, zn.from))
+			&& !check_lower(&((*a)->next), (*a)->next->content, zn.to, zn.from))
 			ans = swap(&(*a), ans, 0);
 		else if ((*a)->flag == zn.from)
 		{
-			if ((*a)->content < minnum)
-				minnum = (*a)->content;
+			if ((*a)->content < zn.to)
+				zn.to = (*a)->content;
 			ans = push(&(*a), &(*b), ans, 0);
 		}
 	}

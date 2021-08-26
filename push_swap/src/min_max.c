@@ -62,16 +62,16 @@ t_opelem	min_max_mid(int num, t_list *st, t_opelem zn, int len)
 	return (zn);
 }
 
-int	check_lower(t_list **a, int minnum, int flag)
+int	check_lower(t_list **a, int numb, int minnum, int flag)
 {
 	t_list	*help;
 
 	help = *a;
-	if (help->content > minnum)
+	if (numb > minnum)
 		return (1);
 	while (help->next && help->flag == flag && help->next->flag == flag)
 	{
-		if ((*a)->content > help->next->content)
+		if (numb > help->next->content)
 			return (1);
 		help = help->next;
 	}

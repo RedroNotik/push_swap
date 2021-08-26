@@ -4,6 +4,18 @@
 
 #include "../includes/push_swap.h"
 
+static int	check_lenght(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	if (i > 10)
+		return (1);
+	return (0);
+}
+
 static int	cust_atoi(char *str, t_list *a)
 {
 	long long int	answ;
@@ -20,7 +32,7 @@ static int	cust_atoi(char *str, t_list *a)
 		sign *= -1;
 	if (*str == '-' || *str == '+')
 		str++;
-	if (!(*str >= '0' && *str <= '9'))
+	if (!(*str >= '0' && *str <= '9') || check_lenght(str))
 		error_msg(a);
 	while (*str >= '0' && *str <= '9')
 	{

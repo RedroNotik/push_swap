@@ -6,7 +6,7 @@ CHECKER_NAME = checker
 LIST = ./main.c ./src/error_msg.c ./src/sort_func.c ./src/switch_funcs.c \
 		./src/min_max.c ./src/sort_to_five.c ./src/new_str.c \
 		./src/sort_six_plus.c ./src/free_list.c \
-		./src/set_order.c ./src/parsing.c \
+		./src/set_order.c ./src/parsing.c  ./src/norm.c\
 
 
 FLAGS = -Wall -Wextra -Werror -I./includes -g
@@ -16,6 +16,7 @@ OBJ	= $(patsubst %.c,%.o,$(LIST))
 
 all :
 	@make -C ./bonus/
+	@mv ./bonus/checker .
 	@make bonus -C ./libft/
 	@make -C ./libft/
 	@make $(NAME)
