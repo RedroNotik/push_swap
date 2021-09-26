@@ -17,6 +17,11 @@ int	main(int argc, char **argv)
 		if (!set_order(&a, zn.size))
 			end_without_error(a);
 		answ = sort_list(zn.size, &a, zn, &b);
+//		while (a)
+//		{
+//			printf("content: %d and flag: %d\n", a->content, a->flag);
+//			a = a->next;
+//		}
 		free_list(&a);
 		ft_putstr_fd(answ, ft_strlen(answ), 1);
 		free(answ);

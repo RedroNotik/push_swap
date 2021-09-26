@@ -15,6 +15,7 @@ char	*help_func2(t_opelem *zn, t_list **a, t_list **b, char *ans)
 
 char	*help_func1(t_opelem *zn, t_list **a, t_list **b, char *ans)
 {
+	(void) b;
 	zn->to = (*a)->content + 1;
 	(*a)->flag = -1;
 	if ((*b) && (*b)->next && (*b)->content != zn->min)

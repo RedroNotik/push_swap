@@ -40,11 +40,11 @@ int	if_case(char *line, t_list **a, t_list **b)
 		rotate(&(*b), NULL, 2);
 	else if (!ft_strncmp("rr", line, 3))
 		rotate_two(&(*a), &(*b));
-	else if (!ft_strncmp("rra", line, 3))
+	else if (!ft_strncmp("rra", line, 4))
 		r_rotate(&(*a), NULL, 2);
-	else if (!ft_strncmp("rrb", line, 3))
+	else if (!ft_strncmp("rrb", line, 4))
 		r_rotate(&(*b), NULL, 2);
-	else if (!ft_strncmp("rrr", line, 3))
+	else if (!ft_strncmp("rrr", line, 4))
 		r_rotate_two(&(*a), &(*b));
 	else if (line[0] != '\0')
 		error_a_b(*a, *b, 1);
